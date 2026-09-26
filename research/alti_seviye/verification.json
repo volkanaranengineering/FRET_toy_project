@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "methods": 5,
+  "rows_checked": 280,
+  "probabilities_checked": 4480,
+  "decision_gates_checked": 25,
+  "levels": [
+    0,
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "tolerance": 1e-12
+}

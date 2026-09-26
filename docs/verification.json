@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "catalog_files": 2225,
+  "catalog_bytes": 58506941,
+  "git_coverage": "all indexed payload files covered",
+  "projects": 10,
+  "formalized_requirements": 61,
+  "expected_outcomes_matched": 177,
+  "http_raw_responses_checked": 40,
+  "workflow_snapshots_checked": 30,
+  "html_local_links_checked": 99,
+  "compiler_hash_matches": true,
+  "scope": "Archive/evidence checks only; does not run FRET, a solver, physical tests or MATLAB."
+}

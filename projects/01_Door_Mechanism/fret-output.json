@@ -1,0 +1,572 @@
+[
+  {
+    "id": "DOOR-01",
+    "input": "whenever scope_approved the DoorSystem shall immediately satisfy (minimum_age = 6 & maximum_age = 12)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "scope_approved",
+        "minimum_age",
+        "maximum_age"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(scope_approved)",
+      "regular_condition": "(scope_approved)",
+      "conditionTextRange": [
+        0,
+        22
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        24,
+        37
+      ],
+      "timingTextRange": [
+        45,
+        55
+      ],
+      "post_condition": "(( minimum_age = 6 & maximum_age = 12 ))",
+      "responseTextRange": [
+        57,
+        100
+      ],
+      "diagramVariables": "CC = <b><i>(scope_approved)</i></b>, Response = <b><i>(( minimum_age = 6 & maximum_age = 12 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(scope_approved)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( minimum_age = 6 & maximum_age = 12 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(scope_approved)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( minimum_age = 6 & maximum_age = 12 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "scope_approved",
+      "regular_condition_unexp_ft": "scope_approved",
+      "regular_condition_unexp_pctl": "scope_approved",
+      "regular_condition_SMV_pt": "scope_approved",
+      "regular_condition_SMV_ft": "scope_approved",
+      "regular_condition_MLTL_ft": "scope_approved",
+      "regular_condition_PRISM_pctl": "scope_approved",
+      "post_condition_unexp_pt": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_unexp_ft": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_unexp_pctl": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_SMV_pt": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_SMV_ft": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_MLTL_ft": "((minimum_age = 6) & (maximum_age = 12))",
+      "post_condition_PRISM_pctl": "((minimum_age = 6) & (maximum_age = 12))",
+      "ft": "(LAST V (scope_approved -> ((minimum_age = 6) & (maximum_age = 12))))",
+      "pt": "(H (scope_approved -> ((minimum_age = 6) & (maximum_age = 12))))",
+      "pctl": "P>=1[(G (scope_approved => (P>=1[((minimum_age = 6) & (maximum_age = 12))])))]",
+      "ptExpanded": "(H (scope_approved -> ((minimum_age = 6) & (maximum_age = 12))))",
+      "CoCoSpecCode": "H((scope_approved => ((minimum_age = 6) and (maximum_age = 12))))",
+      "ftExpanded": "(LAST V (scope_approved -> ((minimum_age = 6) & (maximum_age = 12))))",
+      "pctlExpanded": "P>=1[(G (scope_approved => (P>=1[((minimum_age = 6) & (maximum_age = 12))])))]",
+      "ftInfAUExpanded": "(G (scope_approved -> ((minimum_age = 6) & (maximum_age = 12))))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: scope_approved<br/>p1: ((minimum_age = 6) & (maximum_age = 12))",
+      "R2U2Code": "(scope_approved -> ((minimum_age == 6) && (maximum_age == 12)))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-02",
+    "input": "whenever test_active the DoorSystem shall immediately satisfy (p0_active & fixture_approved)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "test_active",
+        "p0_active",
+        "fixture_approved"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(test_active)",
+      "regular_condition": "(test_active)",
+      "conditionTextRange": [
+        0,
+        19
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        21,
+        34
+      ],
+      "timingTextRange": [
+        42,
+        52
+      ],
+      "post_condition": "(( p0_active & fixture_approved ))",
+      "responseTextRange": [
+        54,
+        91
+      ],
+      "diagramVariables": "CC = <b><i>(test_active)</i></b>, Response = <b><i>(( p0_active & fixture_approved ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( p0_active & fixture_approved ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( p0_active & fixture_approved ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "test_active",
+      "regular_condition_unexp_ft": "test_active",
+      "regular_condition_unexp_pctl": "test_active",
+      "regular_condition_SMV_pt": "test_active",
+      "regular_condition_SMV_ft": "test_active",
+      "regular_condition_MLTL_ft": "test_active",
+      "regular_condition_PRISM_pctl": "test_active",
+      "post_condition_unexp_pt": "(p0_active & fixture_approved)",
+      "post_condition_unexp_ft": "(p0_active & fixture_approved)",
+      "post_condition_unexp_pctl": "(p0_active & fixture_approved)",
+      "post_condition_SMV_pt": "(p0_active & fixture_approved)",
+      "post_condition_SMV_ft": "(p0_active & fixture_approved)",
+      "post_condition_MLTL_ft": "(p0_active & fixture_approved)",
+      "post_condition_PRISM_pctl": "(p0_active & fixture_approved)",
+      "ft": "(LAST V (test_active -> (p0_active & fixture_approved)))",
+      "pt": "(H (test_active -> (p0_active & fixture_approved)))",
+      "pctl": "P>=1[(G (test_active => (P>=1[(p0_active & fixture_approved)])))]",
+      "ptExpanded": "(H (test_active -> (p0_active & fixture_approved)))",
+      "CoCoSpecCode": "H((test_active => (p0_active and fixture_approved)))",
+      "ftExpanded": "(LAST V (test_active -> (p0_active & fixture_approved)))",
+      "pctlExpanded": "P>=1[(G (test_active => (P>=1[(p0_active & fixture_approved)])))]",
+      "ftInfAUExpanded": "(G (test_active -> (p0_active & fixture_approved)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: test_active<br/>p1: (p0_active & fixture_approved)",
+      "R2U2Code": "(test_active -> (p0_active && fixture_approved))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-03",
+    "input": "whenever test_active the DoorSystem shall immediately satisfy (force_n <= 10)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "test_active",
+        "force_n"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(test_active)",
+      "regular_condition": "(test_active)",
+      "conditionTextRange": [
+        0,
+        19
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        21,
+        34
+      ],
+      "timingTextRange": [
+        42,
+        52
+      ],
+      "post_condition": "(( force_n <= 10 ))",
+      "responseTextRange": [
+        54,
+        76
+      ],
+      "diagramVariables": "CC = <b><i>(test_active)</i></b>, Response = <b><i>(( force_n <= 10 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( force_n <= 10 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( force_n <= 10 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "test_active",
+      "regular_condition_unexp_ft": "test_active",
+      "regular_condition_unexp_pctl": "test_active",
+      "regular_condition_SMV_pt": "test_active",
+      "regular_condition_SMV_ft": "test_active",
+      "regular_condition_MLTL_ft": "test_active",
+      "regular_condition_PRISM_pctl": "test_active",
+      "post_condition_unexp_pt": "(force_n <= 10)",
+      "post_condition_unexp_ft": "(force_n <= 10)",
+      "post_condition_unexp_pctl": "(force_n <= 10)",
+      "post_condition_SMV_pt": "(force_n <= 10)",
+      "post_condition_SMV_ft": "(force_n <= 10)",
+      "post_condition_MLTL_ft": "(force_n <= 10)",
+      "post_condition_PRISM_pctl": "(force_n <= 10)",
+      "ft": "(LAST V (test_active -> (force_n <= 10)))",
+      "pt": "(H (test_active -> (force_n <= 10)))",
+      "pctl": "P>=1[(G (test_active => (P>=1[(force_n <= 10)])))]",
+      "ptExpanded": "(H (test_active -> (force_n <= 10)))",
+      "CoCoSpecCode": "H((test_active => (force_n <= 10)))",
+      "ftExpanded": "(LAST V (test_active -> (force_n <= 10)))",
+      "pctlExpanded": "P>=1[(G (test_active => (P>=1[(force_n <= 10)])))]",
+      "ftInfAUExpanded": "(G (test_active -> (force_n <= 10)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: test_active<br/>p1: (force_n <= 10)",
+      "R2U2Code": "(test_active -> (force_n <= 10))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-04",
+    "input": "whenever test_active the DoorSystem shall immediately satisfy (hands_used = 1)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "test_active",
+        "hands_used"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(test_active)",
+      "regular_condition": "(test_active)",
+      "conditionTextRange": [
+        0,
+        19
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        21,
+        34
+      ],
+      "timingTextRange": [
+        42,
+        52
+      ],
+      "post_condition": "(( hands_used = 1 ))",
+      "responseTextRange": [
+        54,
+        77
+      ],
+      "diagramVariables": "CC = <b><i>(test_active)</i></b>, Response = <b><i>(( hands_used = 1 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( hands_used = 1 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(test_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( hands_used = 1 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "test_active",
+      "regular_condition_unexp_ft": "test_active",
+      "regular_condition_unexp_pctl": "test_active",
+      "regular_condition_SMV_pt": "test_active",
+      "regular_condition_SMV_ft": "test_active",
+      "regular_condition_MLTL_ft": "test_active",
+      "regular_condition_PRISM_pctl": "test_active",
+      "post_condition_unexp_pt": "(hands_used = 1)",
+      "post_condition_unexp_ft": "(hands_used = 1)",
+      "post_condition_unexp_pctl": "(hands_used = 1)",
+      "post_condition_SMV_pt": "(hands_used = 1)",
+      "post_condition_SMV_ft": "(hands_used = 1)",
+      "post_condition_MLTL_ft": "(hands_used = 1)",
+      "post_condition_PRISM_pctl": "(hands_used = 1)",
+      "ft": "(LAST V (test_active -> (hands_used = 1)))",
+      "pt": "(H (test_active -> (hands_used = 1)))",
+      "pctl": "P>=1[(G (test_active => (P>=1[(hands_used = 1)])))]",
+      "ptExpanded": "(H (test_active -> (hands_used = 1)))",
+      "CoCoSpecCode": "H((test_active => (hands_used = 1)))",
+      "ftExpanded": "(LAST V (test_active -> (hands_used = 1)))",
+      "pctlExpanded": "P>=1[(G (test_active => (P>=1[(hands_used = 1)])))]",
+      "ftInfAUExpanded": "(G (test_active -> (hands_used = 1)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: test_active<br/>p1: (hands_used = 1)",
+      "R2U2Code": "(test_active -> (hands_used == 1))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-05",
+    "input": "when open_requested the DoorSystem shall eventually satisfy latch_released",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "regular",
+      "probability": "null",
+      "timing": "eventually",
+      "response": "satisfaction",
+      "variables": [
+        "open_requested",
+        "latch_released"
+      ],
+      "qualifier_word": "when",
+      "pre_condition": "(open_requested)",
+      "regular_condition": "(open_requested)",
+      "conditionTextRange": [
+        0,
+        18
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        20,
+        33
+      ],
+      "timingTextRange": [
+        41,
+        50
+      ],
+      "post_condition": "(latch_released)",
+      "responseTextRange": [
+        52,
+        73
+      ],
+      "diagramVariables": "TC = <b><i>(open_requested)</i></b>, Response = <b><i>(latch_released)</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(open_requested)</i></b> is true and any point in the interval where <b><i>(open_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(latch_released)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(open_requested)</i></b> is true and any point in the interval where <b><i>(open_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, <b><i>(latch_released)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_regular_eventually_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "open_requested",
+      "regular_condition_unexp_ft": "open_requested",
+      "regular_condition_unexp_pctl": "open_requested",
+      "regular_condition_SMV_pt": "open_requested",
+      "regular_condition_SMV_ft": "open_requested",
+      "regular_condition_MLTL_ft": "open_requested",
+      "regular_condition_PRISM_pctl": "open_requested",
+      "post_condition_unexp_pt": "latch_released",
+      "post_condition_unexp_ft": "latch_released",
+      "post_condition_unexp_pctl": "latch_released",
+      "post_condition_SMV_pt": "latch_released",
+      "post_condition_SMV_ft": "latch_released",
+      "post_condition_MLTL_ft": "latch_released",
+      "post_condition_PRISM_pctl": "latch_released",
+      "ft": "((LAST V (((! open_requested) & ((! LAST) & (X open_requested))) -> (X ((! LAST) U latch_released)))) & (open_requested -> ((! LAST) U latch_released)))",
+      "pt": "((H (! open_requested)) | (! ((! latch_released) S ((! latch_released) & (open_requested & (Z (! open_requested)))))))",
+      "pctl": "P>=1[((G (((! open_requested) & (X open_requested)) => (X (P>=1[(F latch_released)])))) & (open_requested => (P>=1[(F latch_released)])))]",
+      "ptExpanded": "((H (! open_requested)) | (! ((! latch_released) S ((! latch_released) & (open_requested & (Z (! open_requested)))))))",
+      "CoCoSpecCode": "(H(not (open_requested)) or not (SI((open_requested and ZtoPre(not (open_requested))),not (latch_released))))",
+      "ftExpanded": "((LAST V (((! open_requested) & ((! LAST) & (X open_requested))) -> (X ((! LAST) U latch_released)))) & (open_requested -> ((! LAST) U latch_released)))",
+      "pctlExpanded": "P>=1[((G (((! open_requested) & (X open_requested)) => (X (P>=1[(F latch_released)])))) & (open_requested => (P>=1[(F latch_released)])))]",
+      "ftInfAUExpanded": "((G (((! open_requested) & (X open_requested)) -> (X (F latch_released)))) & (open_requested -> (F latch_released)))",
+      "mltlExpanded": "((G[0,M] (((! p0) & (F[1,1] p0)) -> (F[1,M] p1))) & (p0 -> (F[0,M] p1)))",
+      "WESTMapping": "p0: open_requested<br/>p1: latch_released",
+      "R2U2Code": "((((! open_requested) && (F[1,1] open_requested)) -> (F[1,M] latch_released)) && (((TAU == 0) && open_requested) -> (F[0,M] latch_released)))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-06",
+    "input": "when open_requested the DoorSystem shall eventually satisfy opened_90",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "regular",
+      "probability": "null",
+      "timing": "eventually",
+      "response": "satisfaction",
+      "variables": [
+        "open_requested",
+        "opened_90"
+      ],
+      "qualifier_word": "when",
+      "pre_condition": "(open_requested)",
+      "regular_condition": "(open_requested)",
+      "conditionTextRange": [
+        0,
+        18
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        20,
+        33
+      ],
+      "timingTextRange": [
+        41,
+        50
+      ],
+      "post_condition": "(opened_90)",
+      "responseTextRange": [
+        52,
+        68
+      ],
+      "diagramVariables": "TC = <b><i>(open_requested)</i></b>, Response = <b><i>(opened_90)</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(open_requested)</i></b> is true and any point in the interval where <b><i>(open_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(opened_90)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(open_requested)</i></b> is true and any point in the interval where <b><i>(open_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, <b><i>(opened_90)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_regular_eventually_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "open_requested",
+      "regular_condition_unexp_ft": "open_requested",
+      "regular_condition_unexp_pctl": "open_requested",
+      "regular_condition_SMV_pt": "open_requested",
+      "regular_condition_SMV_ft": "open_requested",
+      "regular_condition_MLTL_ft": "open_requested",
+      "regular_condition_PRISM_pctl": "open_requested",
+      "post_condition_unexp_pt": "opened_90",
+      "post_condition_unexp_ft": "opened_90",
+      "post_condition_unexp_pctl": "opened_90",
+      "post_condition_SMV_pt": "opened_90",
+      "post_condition_SMV_ft": "opened_90",
+      "post_condition_MLTL_ft": "opened_90",
+      "post_condition_PRISM_pctl": "opened_90",
+      "ft": "((LAST V (((! open_requested) & ((! LAST) & (X open_requested))) -> (X ((! LAST) U opened_90)))) & (open_requested -> ((! LAST) U opened_90)))",
+      "pt": "((H (! open_requested)) | (! ((! opened_90) S ((! opened_90) & (open_requested & (Z (! open_requested)))))))",
+      "pctl": "P>=1[((G (((! open_requested) & (X open_requested)) => (X (P>=1[(F opened_90)])))) & (open_requested => (P>=1[(F opened_90)])))]",
+      "ptExpanded": "((H (! open_requested)) | (! ((! opened_90) S ((! opened_90) & (open_requested & (Z (! open_requested)))))))",
+      "CoCoSpecCode": "(H(not (open_requested)) or not (SI((open_requested and ZtoPre(not (open_requested))),not (opened_90))))",
+      "ftExpanded": "((LAST V (((! open_requested) & ((! LAST) & (X open_requested))) -> (X ((! LAST) U opened_90)))) & (open_requested -> ((! LAST) U opened_90)))",
+      "pctlExpanded": "P>=1[((G (((! open_requested) & (X open_requested)) => (X (P>=1[(F opened_90)])))) & (open_requested => (P>=1[(F opened_90)])))]",
+      "ftInfAUExpanded": "((G (((! open_requested) & (X open_requested)) -> (X (F opened_90)))) & (open_requested -> (F opened_90)))",
+      "mltlExpanded": "((G[0,M] (((! p0) & (F[1,1] p0)) -> (F[1,M] p1))) & (p0 -> (F[0,M] p1)))",
+      "WESTMapping": "p0: open_requested<br/>p1: opened_90",
+      "R2U2Code": "((((! open_requested) && (F[1,1] open_requested)) -> (F[1,M] opened_90)) && (((TAU == 0) && open_requested) -> (F[0,M] opened_90)))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-07",
+    "input": "when close_requested the DoorSystem shall eventually satisfy closed_and_latched",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "regular",
+      "probability": "null",
+      "timing": "eventually",
+      "response": "satisfaction",
+      "variables": [
+        "close_requested",
+        "closed_and_latched"
+      ],
+      "qualifier_word": "when",
+      "pre_condition": "(close_requested)",
+      "regular_condition": "(close_requested)",
+      "conditionTextRange": [
+        0,
+        19
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        21,
+        34
+      ],
+      "timingTextRange": [
+        42,
+        51
+      ],
+      "post_condition": "(closed_and_latched)",
+      "responseTextRange": [
+        53,
+        78
+      ],
+      "diagramVariables": "TC = <b><i>(close_requested)</i></b>, Response = <b><i>(closed_and_latched)</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(close_requested)</i></b> is true and any point in the interval where <b><i>(close_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(closed_and_latched)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(close_requested)</i></b> is true and any point in the interval where <b><i>(close_requested)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, <b><i>(closed_and_latched)</i></b> must hold at some time point between (and including) the trigger and the end of the interval.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_regular_eventually_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "close_requested",
+      "regular_condition_unexp_ft": "close_requested",
+      "regular_condition_unexp_pctl": "close_requested",
+      "regular_condition_SMV_pt": "close_requested",
+      "regular_condition_SMV_ft": "close_requested",
+      "regular_condition_MLTL_ft": "close_requested",
+      "regular_condition_PRISM_pctl": "close_requested",
+      "post_condition_unexp_pt": "closed_and_latched",
+      "post_condition_unexp_ft": "closed_and_latched",
+      "post_condition_unexp_pctl": "closed_and_latched",
+      "post_condition_SMV_pt": "closed_and_latched",
+      "post_condition_SMV_ft": "closed_and_latched",
+      "post_condition_MLTL_ft": "closed_and_latched",
+      "post_condition_PRISM_pctl": "closed_and_latched",
+      "ft": "((LAST V (((! close_requested) & ((! LAST) & (X close_requested))) -> (X ((! LAST) U closed_and_latched)))) & (close_requested -> ((! LAST) U closed_and_latched)))",
+      "pt": "((H (! close_requested)) | (! ((! closed_and_latched) S ((! closed_and_latched) & (close_requested & (Z (! close_requested)))))))",
+      "pctl": "P>=1[((G (((! close_requested) & (X close_requested)) => (X (P>=1[(F closed_and_latched)])))) & (close_requested => (P>=1[(F closed_and_latched)])))]",
+      "ptExpanded": "((H (! close_requested)) | (! ((! closed_and_latched) S ((! closed_and_latched) & (close_requested & (Z (! close_requested)))))))",
+      "CoCoSpecCode": "(H(not (close_requested)) or not (SI((close_requested and ZtoPre(not (close_requested))),not (closed_and_latched))))",
+      "ftExpanded": "((LAST V (((! close_requested) & ((! LAST) & (X close_requested))) -> (X ((! LAST) U closed_and_latched)))) & (close_requested -> ((! LAST) U closed_and_latched)))",
+      "pctlExpanded": "P>=1[((G (((! close_requested) & (X close_requested)) => (X (P>=1[(F closed_and_latched)])))) & (close_requested => (P>=1[(F closed_and_latched)])))]",
+      "ftInfAUExpanded": "((G (((! close_requested) & (X close_requested)) -> (X (F closed_and_latched)))) & (close_requested -> (F closed_and_latched)))",
+      "mltlExpanded": "((G[0,M] (((! p0) & (F[1,1] p0)) -> (F[1,M] p1))) & (p0 -> (F[0,M] p1)))",
+      "WESTMapping": "p0: close_requested<br/>p1: closed_and_latched",
+      "R2U2Code": "((((! close_requested) && (F[1,1] close_requested)) -> (F[1,M] closed_and_latched)) && (((TAU == 0) && close_requested) -> (F[0,M] closed_and_latched)))",
+      "component": "DoorSystem"
+    }
+  },
+  {
+    "id": "DOOR-08",
+    "input": "whenever inspection_active the DoorSystem shall immediately satisfy !sharp_edges_present",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "inspection_active",
+        "sharp_edges_present"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(inspection_active)",
+      "regular_condition": "(inspection_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "DoorSystem",
+      "componentTextRange": [
+        27,
+        40
+      ],
+      "timingTextRange": [
+        48,
+        58
+      ],
+      "post_condition": "(! sharp_edges_present)",
+      "responseTextRange": [
+        60,
+        87
+      ],
+      "diagramVariables": "CC = <b><i>(inspection_active)</i></b>, Response = <b><i>(! sharp_edges_present)</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(inspection_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(! sharp_edges_present)</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(inspection_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(! sharp_edges_present)</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "inspection_active",
+      "regular_condition_unexp_ft": "inspection_active",
+      "regular_condition_unexp_pctl": "inspection_active",
+      "regular_condition_SMV_pt": "inspection_active",
+      "regular_condition_SMV_ft": "inspection_active",
+      "regular_condition_MLTL_ft": "inspection_active",
+      "regular_condition_PRISM_pctl": "inspection_active",
+      "post_condition_unexp_pt": "(! sharp_edges_present)",
+      "post_condition_unexp_ft": "(! sharp_edges_present)",
+      "post_condition_unexp_pctl": "(! sharp_edges_present)",
+      "post_condition_SMV_pt": "(! sharp_edges_present)",
+      "post_condition_SMV_ft": "(! sharp_edges_present)",
+      "post_condition_MLTL_ft": "(! sharp_edges_present)",
+      "post_condition_PRISM_pctl": "(! sharp_edges_present)",
+      "ft": "(LAST V (inspection_active -> (! sharp_edges_present)))",
+      "pt": "(H (inspection_active -> (! sharp_edges_present)))",
+      "pctl": "P>=1[(G (inspection_active => (P>=1[(! sharp_edges_present)])))]",
+      "ptExpanded": "(H (inspection_active -> (! sharp_edges_present)))",
+      "CoCoSpecCode": "H((inspection_active => not (sharp_edges_present)))",
+      "ftExpanded": "(LAST V (inspection_active -> (! sharp_edges_present)))",
+      "pctlExpanded": "P>=1[(G (inspection_active => (P>=1[(! sharp_edges_present)])))]",
+      "ftInfAUExpanded": "(G (inspection_active -> (! sharp_edges_present)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: inspection_active<br/>p1: (! sharp_edges_present)",
+      "R2U2Code": "(inspection_active -> (! sharp_edges_present))",
+      "component": "DoorSystem"
+    }
+  }
+]

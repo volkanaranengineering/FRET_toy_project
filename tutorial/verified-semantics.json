@@ -1,0 +1,18 @@
+[
+  {
+    "id": "REQ-001",
+    "text": "when request the ResponseSystem shall within 3 ticks satisfy response",
+    "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(request)</i></b> is true and any point in the interval where <b><i>(request)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+    "formula": "((G (((! request) & (X request)) -> (X (F[0,3] response)))) & (request -> (F[0,3] response)))",
+    "finite": "((LAST V (((! request) & ((! LAST) & (X request))) -> (X ((F[0,3] response) | (F[0,2] LAST))))) & (request -> ((F[0,3] response) | (F[0,2] LAST))))",
+    "diagram": "_media/user-interface/examples/svgDiagrams/null_regular_within_satisfaction.svg"
+  },
+  {
+    "id": "REQ-002",
+    "text": "whenever request the ResponseSystem shall within 3 ticks satisfy response",
+    "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(request)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+    "formula": "(G (request -> (F[0,3] response)))",
+    "finite": "(LAST V (request -> ((F[0,3] response) | (F[0,2] LAST))))",
+    "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_within_satisfaction.svg"
+  }
+]

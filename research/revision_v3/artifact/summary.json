@@ -1,0 +1,14 @@
+{
+  "finite_cases": 2480,
+  "metamorphic_checks": 7440,
+  "refinement_max_error": 0,
+  "boundary_cases": 52,
+  "old_false_closures": 7,
+  "invalid_cases": 41,
+  "matlab_fixture_count": 2573,
+  "status_counts": {
+    "accepted": 12,
+    "failed": 44,
+    "pending": 2424
+  }
+}

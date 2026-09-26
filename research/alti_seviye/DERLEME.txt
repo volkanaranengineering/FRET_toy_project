@@ -1,0 +1,3 @@
+xelatex -interaction=nonstopmode -halt-on-error alti_seviye_gereksinim.tex
+Run twice. Fonts: Cambria, Calibri, Consolas.
+MATLAB: build_six_levels(fullfile(pwd,'assets'))

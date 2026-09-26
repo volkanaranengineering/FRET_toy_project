@@ -1,0 +1,620 @@
+{
+  "requirements": [
+    {
+      "reqid": "M1-L1",
+      "fulltext": "whenever (gate_observed & level = 1) the DecisionLedger shall immediately satisfy (step = 0 & candidate_count = 16)",
+      "rationale": "Existing method 1, level 1 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 1 ))",
+        "regular_condition": "(( gate_observed & level = 1 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 0 & candidate_count = 16 ))",
+        "responseTextRange": [
+          74,
+          114
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 1 ))</i></b>, Response = <b><i>(( step = 0 & candidate_count = 16 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 1 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 0 & candidate_count = 16 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 1 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 0 & candidate_count = 16 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 1))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 1))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 1))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 1))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 1))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 1))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 1))",
+        "post_condition_unexp_pt": "((step = 0) & (candidate_count = 16))",
+        "post_condition_unexp_ft": "((step = 0) & (candidate_count = 16))",
+        "post_condition_unexp_pctl": "((step = 0) & (candidate_count = 16))",
+        "post_condition_SMV_pt": "((step = 0) & (candidate_count = 16))",
+        "post_condition_SMV_ft": "((step = 0) & (candidate_count = 16))",
+        "post_condition_MLTL_ft": "((step = 0) & (candidate_count = 16))",
+        "post_condition_PRISM_pctl": "((step = 0) & (candidate_count = 16))",
+        "ft": "(LAST V ((gate_observed & (level = 1)) -> ((step = 0) & (candidate_count = 16))))",
+        "pt": "(H ((gate_observed & (level = 1)) -> ((step = 0) & (candidate_count = 16))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 1)) => (P>=1[((step = 0) & (candidate_count = 16))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 1)) -> ((step = 0) & (candidate_count = 16))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 1)) => ((step = 0) and (candidate_count = 16))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 1)) -> ((step = 0) & (candidate_count = 16))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 1)) => (P>=1[((step = 0) & (candidate_count = 16))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 1)) -> ((step = 0) & (candidate_count = 16))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 1))<br/>p1: ((step = 0) & (candidate_count = 16))",
+        "R2U2Code": "((gate_observed && (level == 1)) -> ((step == 0) && (candidate_count == 16)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-L2",
+      "fulltext": "whenever (gate_observed & level = 2) the DecisionLedger shall immediately satisfy (step = 11 & candidate_count = 16)",
+      "rationale": "Existing method 1, level 2 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 2 ))",
+        "regular_condition": "(( gate_observed & level = 2 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 11 & candidate_count = 16 ))",
+        "responseTextRange": [
+          74,
+          115
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 2 ))</i></b>, Response = <b><i>(( step = 11 & candidate_count = 16 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 2 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 11 & candidate_count = 16 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 2 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 11 & candidate_count = 16 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 2))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 2))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 2))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 2))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 2))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 2))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 2))",
+        "post_condition_unexp_pt": "((step = 11) & (candidate_count = 16))",
+        "post_condition_unexp_ft": "((step = 11) & (candidate_count = 16))",
+        "post_condition_unexp_pctl": "((step = 11) & (candidate_count = 16))",
+        "post_condition_SMV_pt": "((step = 11) & (candidate_count = 16))",
+        "post_condition_SMV_ft": "((step = 11) & (candidate_count = 16))",
+        "post_condition_MLTL_ft": "((step = 11) & (candidate_count = 16))",
+        "post_condition_PRISM_pctl": "((step = 11) & (candidate_count = 16))",
+        "ft": "(LAST V ((gate_observed & (level = 2)) -> ((step = 11) & (candidate_count = 16))))",
+        "pt": "(H ((gate_observed & (level = 2)) -> ((step = 11) & (candidate_count = 16))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 2)) => (P>=1[((step = 11) & (candidate_count = 16))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 2)) -> ((step = 11) & (candidate_count = 16))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 2)) => ((step = 11) and (candidate_count = 16))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 2)) -> ((step = 11) & (candidate_count = 16))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 2)) => (P>=1[((step = 11) & (candidate_count = 16))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 2)) -> ((step = 11) & (candidate_count = 16))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 2))<br/>p1: ((step = 11) & (candidate_count = 16))",
+        "R2U2Code": "((gate_observed && (level == 2)) -> ((step == 11) && (candidate_count == 16)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-L3",
+      "fulltext": "whenever (gate_observed & level = 3) the DecisionLedger shall immediately satisfy (step = 22 & candidate_count = 8)",
+      "rationale": "Existing method 1, level 3 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 3 ))",
+        "regular_condition": "(( gate_observed & level = 3 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 22 & candidate_count = 8 ))",
+        "responseTextRange": [
+          74,
+          114
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 3 ))</i></b>, Response = <b><i>(( step = 22 & candidate_count = 8 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 3 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 22 & candidate_count = 8 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 3 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 22 & candidate_count = 8 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 3))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 3))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 3))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 3))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 3))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 3))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 3))",
+        "post_condition_unexp_pt": "((step = 22) & (candidate_count = 8))",
+        "post_condition_unexp_ft": "((step = 22) & (candidate_count = 8))",
+        "post_condition_unexp_pctl": "((step = 22) & (candidate_count = 8))",
+        "post_condition_SMV_pt": "((step = 22) & (candidate_count = 8))",
+        "post_condition_SMV_ft": "((step = 22) & (candidate_count = 8))",
+        "post_condition_MLTL_ft": "((step = 22) & (candidate_count = 8))",
+        "post_condition_PRISM_pctl": "((step = 22) & (candidate_count = 8))",
+        "ft": "(LAST V ((gate_observed & (level = 3)) -> ((step = 22) & (candidate_count = 8))))",
+        "pt": "(H ((gate_observed & (level = 3)) -> ((step = 22) & (candidate_count = 8))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 3)) => (P>=1[((step = 22) & (candidate_count = 8))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 3)) -> ((step = 22) & (candidate_count = 8))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 3)) => ((step = 22) and (candidate_count = 8))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 3)) -> ((step = 22) & (candidate_count = 8))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 3)) => (P>=1[((step = 22) & (candidate_count = 8))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 3)) -> ((step = 22) & (candidate_count = 8))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 3))<br/>p1: ((step = 22) & (candidate_count = 8))",
+        "R2U2Code": "((gate_observed && (level == 3)) -> ((step == 22) && (candidate_count == 8)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-L4",
+      "fulltext": "whenever (gate_observed & level = 4) the DecisionLedger shall immediately satisfy (step = 33 & candidate_count = 4)",
+      "rationale": "Existing method 1, level 4 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 4 ))",
+        "regular_condition": "(( gate_observed & level = 4 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 33 & candidate_count = 4 ))",
+        "responseTextRange": [
+          74,
+          114
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 4 ))</i></b>, Response = <b><i>(( step = 33 & candidate_count = 4 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 4 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 33 & candidate_count = 4 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 4 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 33 & candidate_count = 4 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 4))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 4))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 4))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 4))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 4))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 4))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 4))",
+        "post_condition_unexp_pt": "((step = 33) & (candidate_count = 4))",
+        "post_condition_unexp_ft": "((step = 33) & (candidate_count = 4))",
+        "post_condition_unexp_pctl": "((step = 33) & (candidate_count = 4))",
+        "post_condition_SMV_pt": "((step = 33) & (candidate_count = 4))",
+        "post_condition_SMV_ft": "((step = 33) & (candidate_count = 4))",
+        "post_condition_MLTL_ft": "((step = 33) & (candidate_count = 4))",
+        "post_condition_PRISM_pctl": "((step = 33) & (candidate_count = 4))",
+        "ft": "(LAST V ((gate_observed & (level = 4)) -> ((step = 33) & (candidate_count = 4))))",
+        "pt": "(H ((gate_observed & (level = 4)) -> ((step = 33) & (candidate_count = 4))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 4)) => (P>=1[((step = 33) & (candidate_count = 4))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 4)) -> ((step = 33) & (candidate_count = 4))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 4)) => ((step = 33) and (candidate_count = 4))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 4)) -> ((step = 33) & (candidate_count = 4))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 4)) => (P>=1[((step = 33) & (candidate_count = 4))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 4)) -> ((step = 33) & (candidate_count = 4))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 4))<br/>p1: ((step = 33) & (candidate_count = 4))",
+        "R2U2Code": "((gate_observed && (level == 4)) -> ((step == 33) && (candidate_count == 4)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-L5",
+      "fulltext": "whenever (gate_observed & level = 5) the DecisionLedger shall immediately satisfy (step = 44 & candidate_count = 2)",
+      "rationale": "Existing method 1, level 5 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 5 ))",
+        "regular_condition": "(( gate_observed & level = 5 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 44 & candidate_count = 2 ))",
+        "responseTextRange": [
+          74,
+          114
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 5 ))</i></b>, Response = <b><i>(( step = 44 & candidate_count = 2 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 5 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 44 & candidate_count = 2 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 5 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 44 & candidate_count = 2 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 5))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 5))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 5))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 5))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 5))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 5))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 5))",
+        "post_condition_unexp_pt": "((step = 44) & (candidate_count = 2))",
+        "post_condition_unexp_ft": "((step = 44) & (candidate_count = 2))",
+        "post_condition_unexp_pctl": "((step = 44) & (candidate_count = 2))",
+        "post_condition_SMV_pt": "((step = 44) & (candidate_count = 2))",
+        "post_condition_SMV_ft": "((step = 44) & (candidate_count = 2))",
+        "post_condition_MLTL_ft": "((step = 44) & (candidate_count = 2))",
+        "post_condition_PRISM_pctl": "((step = 44) & (candidate_count = 2))",
+        "ft": "(LAST V ((gate_observed & (level = 5)) -> ((step = 44) & (candidate_count = 2))))",
+        "pt": "(H ((gate_observed & (level = 5)) -> ((step = 44) & (candidate_count = 2))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 5)) => (P>=1[((step = 44) & (candidate_count = 2))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 5)) -> ((step = 44) & (candidate_count = 2))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 5)) => ((step = 44) and (candidate_count = 2))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 5)) -> ((step = 44) & (candidate_count = 2))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 5)) => (P>=1[((step = 44) & (candidate_count = 2))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 5)) -> ((step = 44) & (candidate_count = 2))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 5))<br/>p1: ((step = 44) & (candidate_count = 2))",
+        "R2U2Code": "((gate_observed && (level == 5)) -> ((step == 44) && (candidate_count == 2)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-L6",
+      "fulltext": "whenever (gate_observed & level = 6) the DecisionLedger shall immediately satisfy (step = 55 & candidate_count = 1)",
+      "rationale": "Existing method 1, level 6 schedule snapshot.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "step",
+          "candidate_count"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 6 ))",
+        "regular_condition": "(( gate_observed & level = 6 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( step = 55 & candidate_count = 1 ))",
+        "responseTextRange": [
+          74,
+          114
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 6 ))</i></b>, Response = <b><i>(( step = 55 & candidate_count = 1 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 6 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( step = 55 & candidate_count = 1 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 6 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( step = 55 & candidate_count = 1 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 6))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 6))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 6))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 6))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 6))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 6))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 6))",
+        "post_condition_unexp_pt": "((step = 55) & (candidate_count = 1))",
+        "post_condition_unexp_ft": "((step = 55) & (candidate_count = 1))",
+        "post_condition_unexp_pctl": "((step = 55) & (candidate_count = 1))",
+        "post_condition_SMV_pt": "((step = 55) & (candidate_count = 1))",
+        "post_condition_SMV_ft": "((step = 55) & (candidate_count = 1))",
+        "post_condition_MLTL_ft": "((step = 55) & (candidate_count = 1))",
+        "post_condition_PRISM_pctl": "((step = 55) & (candidate_count = 1))",
+        "ft": "(LAST V ((gate_observed & (level = 6)) -> ((step = 55) & (candidate_count = 1))))",
+        "pt": "(H ((gate_observed & (level = 6)) -> ((step = 55) & (candidate_count = 1))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 6)) => (P>=1[((step = 55) & (candidate_count = 1))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 6)) -> ((step = 55) & (candidate_count = 1))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 6)) => ((step = 55) and (candidate_count = 1))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 6)) -> ((step = 55) & (candidate_count = 1))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 6)) => (P>=1[((step = 55) & (candidate_count = 1))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 6)) -> ((step = 55) & (candidate_count = 1))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 6))<br/>p1: ((step = 55) & (candidate_count = 1))",
+        "R2U2Code": "((gate_observed && (level == 6)) -> ((step == 55) && (candidate_count == 1)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-FINAL",
+      "fulltext": "whenever (gate_observed & level = 6) the DecisionLedger shall immediately satisfy (selected_package = 11 & open_topics = 0)",
+      "rationale": "Final design commitment is package 1011, without claiming acceptance.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "gate_observed",
+          "level",
+          "selected_package",
+          "open_topics"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( gate_observed & level = 6 ))",
+        "regular_condition": "(( gate_observed & level = 6 ))",
+        "conditionTextRange": [
+          0,
+          35
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          37,
+          54
+        ],
+        "timingTextRange": [
+          62,
+          72
+        ],
+        "post_condition": "(( selected_package = 11 & open_topics = 0 ))",
+        "responseTextRange": [
+          74,
+          122
+        ],
+        "diagramVariables": "CC = <b><i>(( gate_observed & level = 6 ))</i></b>, Response = <b><i>(( selected_package = 11 & open_topics = 0 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 6 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( selected_package = 11 & open_topics = 0 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( gate_observed & level = 6 ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( selected_package = 11 & open_topics = 0 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(gate_observed & (level = 6))",
+        "regular_condition_unexp_ft": "(gate_observed & (level = 6))",
+        "regular_condition_unexp_pctl": "(gate_observed & (level = 6))",
+        "regular_condition_SMV_pt": "(gate_observed & (level = 6))",
+        "regular_condition_SMV_ft": "(gate_observed & (level = 6))",
+        "regular_condition_MLTL_ft": "(gate_observed & (level = 6))",
+        "regular_condition_PRISM_pctl": "(gate_observed & (level = 6))",
+        "post_condition_unexp_pt": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_unexp_ft": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_unexp_pctl": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_SMV_pt": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_SMV_ft": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_MLTL_ft": "((selected_package = 11) & (open_topics = 0))",
+        "post_condition_PRISM_pctl": "((selected_package = 11) & (open_topics = 0))",
+        "ft": "(LAST V ((gate_observed & (level = 6)) -> ((selected_package = 11) & (open_topics = 0))))",
+        "pt": "(H ((gate_observed & (level = 6)) -> ((selected_package = 11) & (open_topics = 0))))",
+        "pctl": "P>=1[(G ((gate_observed & (level = 6)) => (P>=1[((selected_package = 11) & (open_topics = 0))])))]",
+        "ptExpanded": "(H ((gate_observed & (level = 6)) -> ((selected_package = 11) & (open_topics = 0))))",
+        "CoCoSpecCode": "H(((gate_observed and (level = 6)) => ((selected_package = 11) and (open_topics = 0))))",
+        "ftExpanded": "(LAST V ((gate_observed & (level = 6)) -> ((selected_package = 11) & (open_topics = 0))))",
+        "pctlExpanded": "P>=1[(G ((gate_observed & (level = 6)) => (P>=1[((selected_package = 11) & (open_topics = 0))])))]",
+        "ftInfAUExpanded": "(G ((gate_observed & (level = 6)) -> ((selected_package = 11) & (open_topics = 0))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (gate_observed & (level = 6))<br/>p1: ((selected_package = 11) & (open_topics = 0))",
+        "R2U2Code": "((gate_observed && (level == 6)) -> ((selected_package == 11) && (open_topics == 0)))",
+        "component": "DecisionLedger"
+      }
+    },
+    {
+      "reqid": "M1-ACCEPT",
+      "fulltext": "whenever accepted the DecisionLedger shall immediately satisfy (current_evidence_count = 4 & evidence_valid & !test_failed)",
+      "rationale": "Added acceptance guard, consistent with later paper revisions. Four distinct, current, matching passing records are required.",
+      "project": "06_Door_Method_1",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "accepted",
+          "current_evidence_count",
+          "evidence_valid",
+          "test_failed"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(accepted)",
+        "regular_condition": "(accepted)",
+        "conditionTextRange": [
+          0,
+          16
+        ],
+        "component_name": "DecisionLedger",
+        "componentTextRange": [
+          18,
+          35
+        ],
+        "timingTextRange": [
+          43,
+          53
+        ],
+        "post_condition": "(( current_evidence_count = 4 & evidence_valid & ! test_failed ))",
+        "responseTextRange": [
+          55,
+          122
+        ],
+        "diagramVariables": "CC = <b><i>(accepted)</i></b>, Response = <b><i>(( current_evidence_count = 4 & evidence_valid & ! test_failed ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(accepted)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( current_evidence_count = 4 & evidence_valid & ! test_failed ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(accepted)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( current_evidence_count = 4 & evidence_valid & ! test_failed ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "accepted",
+        "regular_condition_unexp_ft": "accepted",
+        "regular_condition_unexp_pctl": "accepted",
+        "regular_condition_SMV_pt": "accepted",
+        "regular_condition_SMV_ft": "accepted",
+        "regular_condition_MLTL_ft": "accepted",
+        "regular_condition_PRISM_pctl": "accepted",
+        "post_condition_unexp_pt": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_unexp_ft": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_unexp_pctl": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_SMV_pt": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_SMV_ft": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_MLTL_ft": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "post_condition_PRISM_pctl": "(((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "ft": "(LAST V (accepted -> (((current_evidence_count = 4) & evidence_valid) & (! test_failed))))",
+        "pt": "(H (accepted -> (((current_evidence_count = 4) & evidence_valid) & (! test_failed))))",
+        "pctl": "P>=1[(G (accepted => (P>=1[(((current_evidence_count = 4) & evidence_valid) & (! test_failed))])))]",
+        "ptExpanded": "(H (accepted -> (((current_evidence_count = 4) & evidence_valid) & (! test_failed))))",
+        "CoCoSpecCode": "H((accepted => (((current_evidence_count = 4) and evidence_valid) and not (test_failed))))",
+        "ftExpanded": "(LAST V (accepted -> (((current_evidence_count = 4) & evidence_valid) & (! test_failed))))",
+        "pctlExpanded": "P>=1[(G (accepted => (P>=1[(((current_evidence_count = 4) & evidence_valid) & (! test_failed))])))]",
+        "ftInfAUExpanded": "(G (accepted -> (((current_evidence_count = 4) & evidence_valid) & (! test_failed))))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: accepted<br/>p1: (((current_evidence_count = 4) & evidence_valid) & (! test_failed))",
+        "R2U2Code": "(accepted -> (((current_evidence_count == 4) && evidence_valid) && (! test_failed)))",
+        "component": "DecisionLedger"
+      }
+    }
+  ]
+}

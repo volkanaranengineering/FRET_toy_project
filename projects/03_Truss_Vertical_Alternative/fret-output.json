@@ -1,0 +1,73 @@
+[
+  {
+    "id": "TRUSS-V-05",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (vertical_displacement_m < 0.02)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "vertical_displacement_m"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( vertical_displacement_m < 0.02 ))",
+      "responseTextRange": [
+        61,
+        100
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( vertical_displacement_m < 0.02 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( vertical_displacement_m < 0.02 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( vertical_displacement_m < 0.02 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "(vertical_displacement_m < 0.02)",
+      "post_condition_unexp_ft": "(vertical_displacement_m < 0.02)",
+      "post_condition_unexp_pctl": "(vertical_displacement_m < 0.02)",
+      "post_condition_SMV_pt": "(vertical_displacement_m < 0.02)",
+      "post_condition_SMV_ft": "(vertical_displacement_m < 0.02)",
+      "post_condition_MLTL_ft": "(vertical_displacement_m < 0.02)",
+      "post_condition_PRISM_pctl": "(vertical_displacement_m < 0.02)",
+      "ft": "(LAST V (assessment_active -> (vertical_displacement_m < 0.02)))",
+      "pt": "(H (assessment_active -> (vertical_displacement_m < 0.02)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[(vertical_displacement_m < 0.02)])))]",
+      "ptExpanded": "(H (assessment_active -> (vertical_displacement_m < 0.02)))",
+      "CoCoSpecCode": "H((assessment_active => (vertical_displacement_m < 0.02)))",
+      "ftExpanded": "(LAST V (assessment_active -> (vertical_displacement_m < 0.02)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[(vertical_displacement_m < 0.02)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> (vertical_displacement_m < 0.02)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: (vertical_displacement_m < 0.02)",
+      "R2U2Code": "(assessment_active -> (vertical_displacement_m < 0.02))",
+      "component": "TrussSystem"
+    }
+  }
+]

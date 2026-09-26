@@ -1,0 +1,27 @@
+{
+  "name": "ltlsim-core",
+  "version": "1.0.0",
+  "description": "Core functions for NuSMV-based LTL simulation",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test/test_ltlsim.js",
+    "install": "make -C \"./simulator\" && make -C \"./simulator\" clean"
+  },
+  "keywords": [
+    "LTL",
+    "simulation",
+    "NuSMV"
+  ],
+  "author": "Johann Schumann",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "antlr4": "4.8.0",
+    "child_process": "^1.0.2",
+    "nusmvparser": "file:../../../fret-electron/support/NuSMVParser",
+    "ltlsim_nusmvparser": "file:../../../fret-electron/support/LTLSIM_NuSMVParser",
+    "path": "^0.12.7"
+  }
+}

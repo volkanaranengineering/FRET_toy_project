@@ -1,0 +1,7 @@
+{
+  "raw_responses": 40,
+  "http_pairs": 20,
+  "finite_records": 2480,
+  "matlab_records": 2573,
+  "status": "passed"
+}

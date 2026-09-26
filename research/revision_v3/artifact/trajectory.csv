@@ -1,0 +1,7 @@
+level,event,decision,acceptance,closed,label_entropy,class_entropy,support
+1,"İki tasarım, test yok",open,pending,False,1.0,1.0,2
+2,Tek tasarım seçildi,committed,pending,True,0.0,0.0,1
+3,Test başarısız,committed,failed,True,0.0,0.0,1
+4,"Kod değişti, kanıt eski",committed,pending,True,0.0,0.0,1
+5,Yeni test başarılı,committed,accepted,True,0.0,0.0,1
+6,Aynı koda iki etiket,committed,accepted,True,1.0,0.0,1

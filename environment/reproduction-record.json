@@ -1,0 +1,23 @@
+{
+  "fret": "3.0",
+  "node": "20.19.0",
+  "python": "3.12.14",
+  "platform": "Windows",
+  "compiler_source": "vendor/fret/fret-electron/app/parser/FretSemantics.js",
+  "independent_dependency_install": "npm ci using the vendored upstream lockfile; no reliance on original node_modules",
+  "fresh_compilation": {
+    "projects": 10,
+    "requirements": 61,
+    "parse_errors": 0
+  },
+  "fresh_evidence": {
+    "http_requests": 40,
+    "pairs": 20,
+    "workflow_snapshots": 30
+  },
+  "independent_examples": {
+    "expected_outcomes": 177,
+    "matched": 177
+  },
+  "desktop_rebuild": "Not rerun in this checkout; original screenshots and verified installation record preserved."
+}

@@ -1,0 +1,60 @@
+{
+  "compiler": "NASA FRET 3.0",
+  "compiler_sha256": "a0cda458b5e64352c591adc517046fa79066639426765896a71642bc23bbb784",
+  "projects": 10,
+  "requirements": 61,
+  "parse_errors": 0,
+  "formalization_only": true,
+  "projects_detail": [
+    {
+      "id": "01_Door_Mechanism",
+      "title": "Door mechanism — clarified toy baseline",
+      "requirements": 8
+    },
+    {
+      "id": "02_Steel_Truss",
+      "title": "Steel truss — feasibility and bounded optimality contract",
+      "requirements": 8
+    },
+    {
+      "id": "03_Truss_Vertical_Alternative",
+      "title": "Truss — vertical-only displacement interpretation",
+      "requirements": 1
+    },
+    {
+      "id": "04_Request_Response",
+      "title": "Request/response — edge versus sustained trigger",
+      "requirements": 2
+    },
+    {
+      "id": "05_HTTP_HEAD",
+      "title": "HTTP HEAD — no body and optional correct Content-Length",
+      "requirements": 2
+    },
+    {
+      "id": "06_Door_Method_1",
+      "title": "Door workflow 1 — Sequential decision gates",
+      "requirements": 8
+    },
+    {
+      "id": "07_Door_Method_2",
+      "title": "Door workflow 2 — Parallel work packages",
+      "requirements": 8
+    },
+    {
+      "id": "08_Door_Method_3",
+      "title": "Door workflow 3 — Constraint propagation",
+      "requirements": 8
+    },
+    {
+      "id": "09_Door_Method_4",
+      "title": "Door workflow 4 — Evidence updates and final commitment",
+      "requirements": 8
+    },
+    {
+      "id": "10_Door_Method_5",
+      "title": "Door workflow 5 — Prototype candidate elimination",
+      "requirements": 8
+    }
+  ]
+}

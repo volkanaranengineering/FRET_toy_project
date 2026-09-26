@@ -1,0 +1,156 @@
+{
+  "requirements": [
+    {
+      "reqid": "HTTP-01",
+      "fulltext": "whenever head_complete the HttpServer shall immediately satisfy (head_bytes = 0)",
+      "rationale": "HEAD response has no content.",
+      "project": "05_HTTP_HEAD",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "head_complete",
+          "head_bytes"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(head_complete)",
+        "regular_condition": "(head_complete)",
+        "conditionTextRange": [
+          0,
+          21
+        ],
+        "component_name": "HttpServer",
+        "componentTextRange": [
+          23,
+          36
+        ],
+        "timingTextRange": [
+          44,
+          54
+        ],
+        "post_condition": "(( head_bytes = 0 ))",
+        "responseTextRange": [
+          56,
+          79
+        ],
+        "diagramVariables": "CC = <b><i>(head_complete)</i></b>, Response = <b><i>(( head_bytes = 0 ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(head_complete)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( head_bytes = 0 ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(head_complete)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( head_bytes = 0 ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "head_complete",
+        "regular_condition_unexp_ft": "head_complete",
+        "regular_condition_unexp_pctl": "head_complete",
+        "regular_condition_SMV_pt": "head_complete",
+        "regular_condition_SMV_ft": "head_complete",
+        "regular_condition_MLTL_ft": "head_complete",
+        "regular_condition_PRISM_pctl": "head_complete",
+        "post_condition_unexp_pt": "(head_bytes = 0)",
+        "post_condition_unexp_ft": "(head_bytes = 0)",
+        "post_condition_unexp_pctl": "(head_bytes = 0)",
+        "post_condition_SMV_pt": "(head_bytes = 0)",
+        "post_condition_SMV_ft": "(head_bytes = 0)",
+        "post_condition_MLTL_ft": "(head_bytes = 0)",
+        "post_condition_PRISM_pctl": "(head_bytes = 0)",
+        "ft": "(LAST V (head_complete -> (head_bytes = 0)))",
+        "pt": "(H (head_complete -> (head_bytes = 0)))",
+        "pctl": "P>=1[(G (head_complete => (P>=1[(head_bytes = 0)])))]",
+        "ptExpanded": "(H (head_complete -> (head_bytes = 0)))",
+        "CoCoSpecCode": "H((head_complete => (head_bytes = 0)))",
+        "ftExpanded": "(LAST V (head_complete -> (head_bytes = 0)))",
+        "pctlExpanded": "P>=1[(G (head_complete => (P>=1[(head_bytes = 0)])))]",
+        "ftInfAUExpanded": "(G (head_complete -> (head_bytes = 0)))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: head_complete<br/>p1: (head_bytes = 0)",
+        "R2U2Code": "(head_complete -> (head_bytes == 0))",
+        "component": "HttpServer"
+      }
+    },
+    {
+      "reqid": "HTTP-02",
+      "fulltext": "whenever (head_complete & length_present) the HttpServer shall immediately satisfy (head_length = get_bytes)",
+      "rationale": "If present, Content-Length matches the corresponding GET.",
+      "project": "05_HTTP_HEAD",
+      "parent_reqid": "",
+      "status": "",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "immediately",
+        "response": "satisfaction",
+        "variables": [
+          "head_complete",
+          "length_present",
+          "head_length",
+          "get_bytes"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(( head_complete & length_present ))",
+        "regular_condition": "(( head_complete & length_present ))",
+        "conditionTextRange": [
+          0,
+          40
+        ],
+        "component_name": "HttpServer",
+        "componentTextRange": [
+          42,
+          55
+        ],
+        "timingTextRange": [
+          63,
+          73
+        ],
+        "post_condition": "(( head_length = get_bytes ))",
+        "responseTextRange": [
+          75,
+          107
+        ],
+        "diagramVariables": "CC = <b><i>(( head_complete & length_present ))</i></b>, Response = <b><i>(( head_length = get_bytes ))</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( head_complete & length_present ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( head_length = get_bytes ))</i></b> also holds at the same time point.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(( head_complete & length_present ))</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( head_length = get_bytes ))</i></b> also holds at the same time point.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "(head_complete & length_present)",
+        "regular_condition_unexp_ft": "(head_complete & length_present)",
+        "regular_condition_unexp_pctl": "(head_complete & length_present)",
+        "regular_condition_SMV_pt": "(head_complete & length_present)",
+        "regular_condition_SMV_ft": "(head_complete & length_present)",
+        "regular_condition_MLTL_ft": "(head_complete & length_present)",
+        "regular_condition_PRISM_pctl": "(head_complete & length_present)",
+        "post_condition_unexp_pt": "(head_length = get_bytes)",
+        "post_condition_unexp_ft": "(head_length = get_bytes)",
+        "post_condition_unexp_pctl": "(head_length = get_bytes)",
+        "post_condition_SMV_pt": "(head_length = get_bytes)",
+        "post_condition_SMV_ft": "(head_length = get_bytes)",
+        "post_condition_MLTL_ft": "(head_length = get_bytes)",
+        "post_condition_PRISM_pctl": "(head_length = get_bytes)",
+        "ft": "(LAST V ((head_complete & length_present) -> (head_length = get_bytes)))",
+        "pt": "(H ((head_complete & length_present) -> (head_length = get_bytes)))",
+        "pctl": "P>=1[(G ((head_complete & length_present) => (P>=1[(head_length = get_bytes)])))]",
+        "ptExpanded": "(H ((head_complete & length_present) -> (head_length = get_bytes)))",
+        "CoCoSpecCode": "H(((head_complete and length_present) => (head_length = get_bytes)))",
+        "ftExpanded": "(LAST V ((head_complete & length_present) -> (head_length = get_bytes)))",
+        "pctlExpanded": "P>=1[(G ((head_complete & length_present) => (P>=1[(head_length = get_bytes)])))]",
+        "ftInfAUExpanded": "(G ((head_complete & length_present) -> (head_length = get_bytes)))",
+        "mltlExpanded": "(G[0,M] (p0 -> p1))",
+        "WESTMapping": "p0: (head_complete & length_present)<br/>p1: (head_length = get_bytes)",
+        "R2U2Code": "((head_complete && length_present) -> (head_length == get_bytes))",
+        "component": "HttpServer"
+      }
+    }
+  ]
+}

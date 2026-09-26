@@ -1,0 +1,24 @@
+.parserError {
+  display: table;
+}
+
+.parserErrorCell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.layout {
+  display: table;
+  table-layout: fixed;
+}
+
+.form {
+  display: table-cell;
+}
+
+.instruction {
+  display: table-cell;
+  background: #ECEFF1;
+  width:460px;
+  position: relative;
+}

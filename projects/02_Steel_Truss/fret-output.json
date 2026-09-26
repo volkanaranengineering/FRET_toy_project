@@ -1,0 +1,579 @@
+[
+  {
+    "id": "TRUSS-01",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (load_kgf = 1000 & offset_m = 2)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "load_kgf",
+        "offset_m"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( load_kgf = 1000 & offset_m = 2 ))",
+      "responseTextRange": [
+        61,
+        100
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( load_kgf = 1000 & offset_m = 2 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( load_kgf = 1000 & offset_m = 2 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( load_kgf = 1000 & offset_m = 2 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_unexp_ft": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_unexp_pctl": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_SMV_pt": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_SMV_ft": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_MLTL_ft": "((load_kgf = 1000) & (offset_m = 2))",
+      "post_condition_PRISM_pctl": "((load_kgf = 1000) & (offset_m = 2))",
+      "ft": "(LAST V (assessment_active -> ((load_kgf = 1000) & (offset_m = 2))))",
+      "pt": "(H (assessment_active -> ((load_kgf = 1000) & (offset_m = 2))))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[((load_kgf = 1000) & (offset_m = 2))])))]",
+      "ptExpanded": "(H (assessment_active -> ((load_kgf = 1000) & (offset_m = 2))))",
+      "CoCoSpecCode": "H((assessment_active => ((load_kgf = 1000) and (offset_m = 2))))",
+      "ftExpanded": "(LAST V (assessment_active -> ((load_kgf = 1000) & (offset_m = 2))))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[((load_kgf = 1000) & (offset_m = 2))])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> ((load_kgf = 1000) & (offset_m = 2))))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: ((load_kgf = 1000) & (offset_m = 2))",
+      "R2U2Code": "(assessment_active -> ((load_kgf == 1000) && (offset_m == 2)))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-02",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (steel_only & solid_circular & fixed_section)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "steel_only",
+        "solid_circular",
+        "fixed_section"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( steel_only & solid_circular & fixed_section ))",
+      "responseTextRange": [
+        61,
+        113
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( steel_only & solid_circular & fixed_section ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( steel_only & solid_circular & fixed_section ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( steel_only & solid_circular & fixed_section ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_unexp_ft": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_unexp_pctl": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_SMV_pt": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_SMV_ft": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_MLTL_ft": "((steel_only & solid_circular) & fixed_section)",
+      "post_condition_PRISM_pctl": "((steel_only & solid_circular) & fixed_section)",
+      "ft": "(LAST V (assessment_active -> ((steel_only & solid_circular) & fixed_section)))",
+      "pt": "(H (assessment_active -> ((steel_only & solid_circular) & fixed_section)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[((steel_only & solid_circular) & fixed_section)])))]",
+      "ptExpanded": "(H (assessment_active -> ((steel_only & solid_circular) & fixed_section)))",
+      "CoCoSpecCode": "H((assessment_active => ((steel_only and solid_circular) and fixed_section)))",
+      "ftExpanded": "(LAST V (assessment_active -> ((steel_only & solid_circular) & fixed_section)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[((steel_only & solid_circular) & fixed_section)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> ((steel_only & solid_circular) & fixed_section)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: ((steel_only & solid_circular) & fixed_section)",
+      "R2U2Code": "(assessment_active -> ((steel_only && solid_circular) && fixed_section))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-03",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (allowed_lengths & available_grid_only)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "allowed_lengths",
+        "available_grid_only"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( allowed_lengths & available_grid_only ))",
+      "responseTextRange": [
+        61,
+        107
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( allowed_lengths & available_grid_only ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( allowed_lengths & available_grid_only ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( allowed_lengths & available_grid_only ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "(allowed_lengths & available_grid_only)",
+      "post_condition_unexp_ft": "(allowed_lengths & available_grid_only)",
+      "post_condition_unexp_pctl": "(allowed_lengths & available_grid_only)",
+      "post_condition_SMV_pt": "(allowed_lengths & available_grid_only)",
+      "post_condition_SMV_ft": "(allowed_lengths & available_grid_only)",
+      "post_condition_MLTL_ft": "(allowed_lengths & available_grid_only)",
+      "post_condition_PRISM_pctl": "(allowed_lengths & available_grid_only)",
+      "ft": "(LAST V (assessment_active -> (allowed_lengths & available_grid_only)))",
+      "pt": "(H (assessment_active -> (allowed_lengths & available_grid_only)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[(allowed_lengths & available_grid_only)])))]",
+      "ptExpanded": "(H (assessment_active -> (allowed_lengths & available_grid_only)))",
+      "CoCoSpecCode": "H((assessment_active => (allowed_lengths and available_grid_only)))",
+      "ftExpanded": "(LAST V (assessment_active -> (allowed_lengths & available_grid_only)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[(allowed_lengths & available_grid_only)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> (allowed_lengths & available_grid_only)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: (allowed_lengths & available_grid_only)",
+      "R2U2Code": "(assessment_active -> (allowed_lengths && available_grid_only))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-04",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (connected_to_wall & stable & joints_rigid_enough)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "connected_to_wall",
+        "stable",
+        "joints_rigid_enough"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( connected_to_wall & stable & joints_rigid_enough ))",
+      "responseTextRange": [
+        61,
+        118
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( connected_to_wall & stable & joints_rigid_enough ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( connected_to_wall & stable & joints_rigid_enough ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( connected_to_wall & stable & joints_rigid_enough ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_unexp_ft": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_unexp_pctl": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_SMV_pt": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_SMV_ft": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_MLTL_ft": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "post_condition_PRISM_pctl": "((connected_to_wall & stable) & joints_rigid_enough)",
+      "ft": "(LAST V (assessment_active -> ((connected_to_wall & stable) & joints_rigid_enough)))",
+      "pt": "(H (assessment_active -> ((connected_to_wall & stable) & joints_rigid_enough)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[((connected_to_wall & stable) & joints_rigid_enough)])))]",
+      "ptExpanded": "(H (assessment_active -> ((connected_to_wall & stable) & joints_rigid_enough)))",
+      "CoCoSpecCode": "H((assessment_active => ((connected_to_wall and stable) and joints_rigid_enough)))",
+      "ftExpanded": "(LAST V (assessment_active -> ((connected_to_wall & stable) & joints_rigid_enough)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[((connected_to_wall & stable) & joints_rigid_enough)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> ((connected_to_wall & stable) & joints_rigid_enough)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: ((connected_to_wall & stable) & joints_rigid_enough)",
+      "R2U2Code": "(assessment_active -> ((connected_to_wall && stable) && joints_rigid_enough))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-05",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (displacement_m < 0.02)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "displacement_m"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( displacement_m < 0.02 ))",
+      "responseTextRange": [
+        61,
+        91
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( displacement_m < 0.02 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( displacement_m < 0.02 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( displacement_m < 0.02 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "(displacement_m < 0.02)",
+      "post_condition_unexp_ft": "(displacement_m < 0.02)",
+      "post_condition_unexp_pctl": "(displacement_m < 0.02)",
+      "post_condition_SMV_pt": "(displacement_m < 0.02)",
+      "post_condition_SMV_ft": "(displacement_m < 0.02)",
+      "post_condition_MLTL_ft": "(displacement_m < 0.02)",
+      "post_condition_PRISM_pctl": "(displacement_m < 0.02)",
+      "ft": "(LAST V (assessment_active -> (displacement_m < 0.02)))",
+      "pt": "(H (assessment_active -> (displacement_m < 0.02)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[(displacement_m < 0.02)])))]",
+      "ptExpanded": "(H (assessment_active -> (displacement_m < 0.02)))",
+      "CoCoSpecCode": "H((assessment_active => (displacement_m < 0.02)))",
+      "ftExpanded": "(LAST V (assessment_active -> (displacement_m < 0.02)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[(displacement_m < 0.02)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> (displacement_m < 0.02)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: (displacement_m < 0.02)",
+      "R2U2Code": "(assessment_active -> (displacement_m < 0.02))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-06",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (yield_utilization <= 1)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "yield_utilization"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( yield_utilization <= 1 ))",
+      "responseTextRange": [
+        61,
+        92
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( yield_utilization <= 1 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( yield_utilization <= 1 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( yield_utilization <= 1 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "(yield_utilization <= 1)",
+      "post_condition_unexp_ft": "(yield_utilization <= 1)",
+      "post_condition_unexp_pctl": "(yield_utilization <= 1)",
+      "post_condition_SMV_pt": "(yield_utilization <= 1)",
+      "post_condition_SMV_ft": "(yield_utilization <= 1)",
+      "post_condition_MLTL_ft": "(yield_utilization <= 1)",
+      "post_condition_PRISM_pctl": "(yield_utilization <= 1)",
+      "ft": "(LAST V (assessment_active -> (yield_utilization <= 1)))",
+      "pt": "(H (assessment_active -> (yield_utilization <= 1)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[(yield_utilization <= 1)])))]",
+      "ptExpanded": "(H (assessment_active -> (yield_utilization <= 1)))",
+      "CoCoSpecCode": "H((assessment_active => (yield_utilization <= 1)))",
+      "ftExpanded": "(LAST V (assessment_active -> (yield_utilization <= 1)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[(yield_utilization <= 1)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> (yield_utilization <= 1)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: (yield_utilization <= 1)",
+      "R2U2Code": "(assessment_active -> (yield_utilization <= 1))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-07",
+    "input": "whenever assessment_active the TrussSystem shall immediately satisfy (buckling_utilization <= 1)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "assessment_active",
+        "buckling_utilization"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(assessment_active)",
+      "regular_condition": "(assessment_active)",
+      "conditionTextRange": [
+        0,
+        25
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        27,
+        41
+      ],
+      "timingTextRange": [
+        49,
+        59
+      ],
+      "post_condition": "(( buckling_utilization <= 1 ))",
+      "responseTextRange": [
+        61,
+        95
+      ],
+      "diagramVariables": "CC = <b><i>(assessment_active)</i></b>, Response = <b><i>(( buckling_utilization <= 1 ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( buckling_utilization <= 1 ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(assessment_active)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( buckling_utilization <= 1 ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "assessment_active",
+      "regular_condition_unexp_ft": "assessment_active",
+      "regular_condition_unexp_pctl": "assessment_active",
+      "regular_condition_SMV_pt": "assessment_active",
+      "regular_condition_SMV_ft": "assessment_active",
+      "regular_condition_MLTL_ft": "assessment_active",
+      "regular_condition_PRISM_pctl": "assessment_active",
+      "post_condition_unexp_pt": "(buckling_utilization <= 1)",
+      "post_condition_unexp_ft": "(buckling_utilization <= 1)",
+      "post_condition_unexp_pctl": "(buckling_utilization <= 1)",
+      "post_condition_SMV_pt": "(buckling_utilization <= 1)",
+      "post_condition_SMV_ft": "(buckling_utilization <= 1)",
+      "post_condition_MLTL_ft": "(buckling_utilization <= 1)",
+      "post_condition_PRISM_pctl": "(buckling_utilization <= 1)",
+      "ft": "(LAST V (assessment_active -> (buckling_utilization <= 1)))",
+      "pt": "(H (assessment_active -> (buckling_utilization <= 1)))",
+      "pctl": "P>=1[(G (assessment_active => (P>=1[(buckling_utilization <= 1)])))]",
+      "ptExpanded": "(H (assessment_active -> (buckling_utilization <= 1)))",
+      "CoCoSpecCode": "H((assessment_active => (buckling_utilization <= 1)))",
+      "ftExpanded": "(LAST V (assessment_active -> (buckling_utilization <= 1)))",
+      "pctlExpanded": "P>=1[(G (assessment_active => (P>=1[(buckling_utilization <= 1)])))]",
+      "ftInfAUExpanded": "(G (assessment_active -> (buckling_utilization <= 1)))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: assessment_active<br/>p1: (buckling_utilization <= 1)",
+      "R2U2Code": "(assessment_active -> (buckling_utilization <= 1))",
+      "component": "TrussSystem"
+    }
+  },
+  {
+    "id": "TRUSS-08",
+    "input": "whenever selection_complete the TrussSystem shall immediately satisfy (feasible & enumeration_complete & mass_kg = enumerated_min_mass_kg)",
+    "semantics": {
+      "type": "nasa",
+      "scope": {
+        "type": "null"
+      },
+      "condition": "holding",
+      "probability": "null",
+      "timing": "immediately",
+      "response": "satisfaction",
+      "variables": [
+        "selection_complete",
+        "feasible",
+        "enumeration_complete",
+        "mass_kg",
+        "enumerated_min_mass_kg"
+      ],
+      "qualifier_word": "whenever",
+      "pre_condition": "(selection_complete)",
+      "regular_condition": "(selection_complete)",
+      "conditionTextRange": [
+        0,
+        26
+      ],
+      "component_name": "TrussSystem",
+      "componentTextRange": [
+        28,
+        42
+      ],
+      "timingTextRange": [
+        50,
+        60
+      ],
+      "post_condition": "(( feasible & enumeration_complete & mass_kg = enumerated_min_mass_kg ))",
+      "responseTextRange": [
+        62,
+        137
+      ],
+      "diagramVariables": "CC = <b><i>(selection_complete)</i></b>, Response = <b><i>(( feasible & enumeration_complete & mass_kg = enumerated_min_mass_kg ))</i></b>.",
+      "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(selection_complete)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, if trigger holds then <b><i>(( feasible & enumeration_complete & mass_kg = enumerated_min_mass_kg ))</i></b> also holds at the same time point.",
+      "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(selection_complete)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, if trigger holds then <b><i>(( feasible & enumeration_complete & mass_kg = enumerated_min_mass_kg ))</i></b> also holds at the same time point.",
+      "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_immediately_satisfaction.svg",
+      "scope_mode_pt": "BAD_PT",
+      "scope_mode_ft": "BAD_FT",
+      "regular_condition_unexp_pt": "selection_complete",
+      "regular_condition_unexp_ft": "selection_complete",
+      "regular_condition_unexp_pctl": "selection_complete",
+      "regular_condition_SMV_pt": "selection_complete",
+      "regular_condition_SMV_ft": "selection_complete",
+      "regular_condition_MLTL_ft": "selection_complete",
+      "regular_condition_PRISM_pctl": "selection_complete",
+      "post_condition_unexp_pt": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_unexp_ft": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_unexp_pctl": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_SMV_pt": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_SMV_ft": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_MLTL_ft": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "post_condition_PRISM_pctl": "((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "ft": "(LAST V (selection_complete -> ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))))",
+      "pt": "(H (selection_complete -> ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))))",
+      "pctl": "P>=1[(G (selection_complete => (P>=1[((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))])))]",
+      "ptExpanded": "(H (selection_complete -> ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))))",
+      "CoCoSpecCode": "H((selection_complete => ((feasible and enumeration_complete) and (mass_kg = enumerated_min_mass_kg))))",
+      "ftExpanded": "(LAST V (selection_complete -> ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))))",
+      "pctlExpanded": "P>=1[(G (selection_complete => (P>=1[((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))])))]",
+      "ftInfAUExpanded": "(G (selection_complete -> ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))))",
+      "mltlExpanded": "(G[0,M] (p0 -> p1))",
+      "WESTMapping": "p0: selection_complete<br/>p1: ((feasible & enumeration_complete) & (mass_kg = enumerated_min_mass_kg))",
+      "R2U2Code": "(selection_complete -> ((feasible && enumeration_complete) && (mass_kg == enumerated_min_mass_kg)))",
+      "component": "TrussSystem"
+    }
+  }
+]

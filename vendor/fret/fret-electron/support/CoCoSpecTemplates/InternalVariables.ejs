@@ -1,0 +1,8 @@
+let
+<%for (i=0; i < internalVariables.length; i++) {%>
+<%var semiColon = assignments[i].endsWith(';') ? '' : ';'%>
+var <%- internalVariables[i].name %>: <%- internalVariables[i].type %> = <%- assignments[i] %><%- semiColon -%><%}%>
+
+<%for (i=0; i < modes.length; i++) {%>
+<%var semiColon = modes[i].assignment.endsWith(';') ? '' : ';'%>
+var <%- modes[i].name %>: <%- modes[i].type %> = <%- modes[i].assignment %><%- semiColon -%><%}%>

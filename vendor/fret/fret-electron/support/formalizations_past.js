@@ -1,0 +1,428 @@
+// Copyright © 2025, United States Government, as represented by the Administrator of the National Aeronautics and Space Administration. All rights reserved.
+// 
+// The “FRET : Formal Requirements Elicitation Tool - Version 3.0” software is licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. 
+// 
+// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+const fretSupportPath = "./";
+const constants = require('../app/parser/Constants');
+const utilities = require(fretSupportPath + 'utilities');
+//const requirementInterval = require(fretSupportPath + 'requirementInterval');
+
+
+const SpecialCases =
+      // mode,cond,timing
+      [
+          ['in,null,always,-', ((options) => options.in==='afterUntil'),
+	   'historically (MODE implies RES)'],
+          ['in,null,never,-', ((options) => options.in==='afterUntil'),
+	   'historically (MODE implies (not RES))'],
+	  ['in,null,immediately,-', ((options) => options.in==='afterUntil'),
+	   'historically (FiM implies RES)'],
+	  ['notin,null,always,-', ((options) => options.in==='afterUntil'),
+	   'historically ((not MODE) implies RES)'],
+	  ['notin,null,never,-', ((options) => options.in==='afterUntil'),
+	   'historically (RES implies MODE)'],
+	  ['notin,null,immediately,-', ((options) => options.in==='afterUntil'),
+	   'historically (FNiM implies RES)'],
+	  ['onlyIn,null,immediately,-', ((options) => options.in==='afterUntil'),
+	   'historically (FNiM implies (not RES))'],
+	  ['onlyIn,null,eventually,-', ((options) => options.in==='afterUntil'),
+	   'historically (RES implies MODE)'],
+	  ['onlyAfter,null,immediately,-', ((options) => options.in==='afterUntil'),
+	   'historically (FTP implies (not RES))']
+      ];
+
+var holding = false;
+
+function determineBaseForm (negate, timing, condition) {
+  var cond = (condition=='regular'|condition=='holding')?'COND':'null';
+  holding = condition == 'holding'
+  var duration = 'BOUND';
+  var property = 'RES';
+  var stopCondition = 'STOPCOND'
+
+  var main_formula = 'no_match';
+  switch (timing){
+    case 'immediately':
+        main_formula = (negate=='true') ? notImmediately(property, cond):immediately(property, cond);
+        break;
+  case 'finally':
+    main_formula = (negate == 'true') ? notFinally(property, cond) : Finally(property,cond);
+    break;
+    case 'next':
+        main_formula = (negate=='true') ? notNext(property, cond):next(property, cond);
+        break;
+    case 'always':
+        main_formula = (negate=='true') ? notAlways(property, cond):always(property, cond);
+        break;
+    case 'null':
+    case 'eventually':
+        main_formula = (negate=='true') ? notEventually(property, cond):eventually(property, cond);
+        break;
+    case 'never':
+        main_formula = (negate=='true') ? notNever(property, cond):never(property, cond);
+        break;
+    case 'until':
+        main_formula = (negate=='true') ? notUntilTiming(property, stopCondition, cond):untilTiming(property, stopCondition, cond);
+        break;
+    case 'before':
+        main_formula = (negate=='true') ? notBeforeTiming(property, stopCondition, cond):beforeTiming(property, stopCondition, cond);
+        break;
+    case 'for':
+        main_formula = (negate=='true') ? notThroughout(property, duration, cond):throughout(property, duration, cond);
+        break;
+    case 'within':
+        main_formula = (negate=='true') ? notWithin(property, duration, cond):within(property, duration, cond);
+        break;
+    case 'after':
+        main_formula = (negate=='true') ? notAfter(property, duration, cond):after(property, duration, cond);
+        break;
+    default:
+  }
+  return main_formula;
+}
+
+function negate(str) {return utilities.negate(str)}
+function parenthesize(str) {return utilities.parenthesize(str)}
+function disjunction(str1, str2) {return utilities.disjunction([str1, str2])}
+function conjunction(str1, str2) {return utilities.conjunction([str1, str2])}
+function implication(str1, str2) {return utilities.implication(str1, str2)}
+
+
+// All the persistsTo that refer to the general formula:
+// right implies previous (persistsTo(formula, left, inclusive))
+// should normally have 'optional' But it just so happens that
+// the endpoints of our intervals are such that if right exists it must be
+// preceded by left because they involve change of mode value.
+// The exception is when we start at LAST but then we add "once left"
+// so we take care of it.
+function persistsTo(formula, start, inclusive = 'inclusive', required = 'required') {
+  return parenthesize(`${formula} since ${required} ${inclusive} ${start}`);
+}
+
+function occursBy(formula, start, inclusive = 'inclusive', required = 'required') {
+  return negate(persistsTo(negate(formula), start, inclusive, required));
+}
+
+function occursWithinTime (duration, formula) {
+  return parenthesize(`once timed[<=${duration}] ${formula}`)
+}
+
+function occursAtTime (duration, formula) {
+  return parenthesize(`previous timed[=${duration}] ${formula}`)
+}
+
+function occursBeforeTime (duration, formula) {
+  return parenthesize(`once timed[<${duration}] ${formula}`)
+}
+
+function previous(formula) {return `previous ${formula}`}
+
+function conditionTrigger (cond, left) {
+  if (holding) return cond
+  else return disjunction(`${cond} and previous (not (${cond}))`, `${cond} and ${left}`)
+}
+
+function noCondInterval (cond, start) {
+  return persistsTo(negate(cond), start)
+}
+
+// all our formalizations related to this startpoint
+var left = 'LEFTEND'
+
+// building blocks for our formalization
+// Note that we can never negate an entire timing
+// implementation, for example, we cannot say that
+// eventually = not (never). The reason is that,
+// when we have conditions, if an interval
+// never contains a condition, then it satisfies
+// both the timing and its negation.
+
+
+function immediately(property, cond='null') {
+  var focuspoint = left;
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    focuspoint = trigger;
+  }
+
+  var formula = implication(focuspoint, property);
+  return persistsTo(formula, left)
+}
+
+function notImmediately(property, cond='null') {
+  return(immediately(negate(property), cond))
+}
+
+function Finally(property, cond='null') {
+  var formula = property
+  if (cond != 'null') {
+    formula = disjunction(noCondInterval(cond,left),
+                          property)
+  }
+  return (formula)
+}
+
+function notFinally(property, cond='null') {
+  return Finally(negate(property),cond);
+}
+
+function next(property, cond='null') {
+  var focuspoint = previous(left);
+  var expect = property;
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    focuspoint = previous(trigger);
+    expect = disjunction(property, left);
+  }
+  var formula = implication(focuspoint, expect);
+  return persistsTo(formula, left);
+}
+
+function notNext(property, cond='null') {
+  return next(negate(property), cond);
+}
+
+// this significantly simplifies previous version - June 2020
+function always(property, cond='null') {
+  var formula = property
+  if (cond != 'null')
+    formula = disjunction(noCondInterval(cond,left), property);
+  return persistsTo(formula, left)
+}
+
+// eventually not
+function notAlways(property, cond='null') {
+  return eventually(negate(property), cond)
+}
+
+// Do not add persists at the end - it would be wrong.
+// The property says that we need to satisfy the last trigger since that will also
+// satisfy all previous ones!
+function eventually(property, cond='null') {
+  var formula = occursBy(property, left);
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    formula = disjunction(noCondInterval(cond,left),
+                          occursBy(property, trigger))
+  }
+  return (formula)
+}
+
+
+function notEventually(property, cond='null') { // always not
+  return always(negate(property), cond)
+}
+
+function never(property, cond='null') { // always not
+  return always(negate(property), cond)
+}
+
+function notNever(property, cond='null') { // eventually
+  return eventually(property, cond)
+}
+
+function untilTiming(property, stopcond, cond='null') {
+    var notStopped = persistsTo(negate(stopcond), left);
+    var formula = implication(notStopped, property);
+
+    if (cond != 'null') {
+      let trigger = conditionTrigger(cond,left);
+      notStopped = persistsTo(negate(stopcond), trigger);
+      var formula = disjunction(noCondInterval(cond, left), implication(notStopped, property))
+    }
+    return persistsTo(formula, left)
+  }
+
+
+function notUntilTiming(property,stopcond,cond='null') {
+    return beforeTiming(negate(property),stopcond,cond)
+}
+
+
+
+function beforeTiming(property, stopcond, cond='null') {
+  // to occur strictly before we cannot have the trigger or left where stop occurs,
+  // and the property must occur between previous timepoint and left / trigger
+
+  var stopEnforces =  conjunction(negate(left),
+                                  previous(occursBy(property, left)));
+
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    // if no condition occurs anywhere from stop to left, vacuously true
+    // otherwise check is similar to above case but adds trigger
+    var noLeftAndHolding = conjunction(negate(left), negate(trigger));
+    stopEnforces = disjunction(noCondInterval(cond, left),
+                              conjunction(noLeftAndHolding,
+                                          previous(occursBy(property, trigger))));
+  }
+
+  formula = implication(stopcond, stopEnforces);
+  return persistsTo(formula, left)
+}
+
+
+function notBeforeTiming(property, stopcond, cond='null') {
+    return (untilTiming(negate(property),stopcond,cond))
+}
+
+
+function throughout(property, duration, cond='null') {
+  var nearTrigger = occursWithinTime(duration, left);
+  var formula = implication(nearTrigger, property);
+
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    nearTrigger = occursWithinTime(duration, trigger);
+    formula = implication (nearTrigger,
+                          disjunction(noCondInterval(cond, left), property));
+  }
+  return persistsTo(formula, left)
+}
+
+function notThroughout(property, duration, cond='null') {
+  return within(negate(property), duration, cond)
+}
+
+function within(property, duration, cond='null') {
+  var formula = implication(persistsTo(negate(property), left), occursBeforeTime(duration, left));
+
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    var triggerAtN = occursAtTime(duration, conjunction(trigger, negate(property)));
+    var resBeforeN = occursBeforeTime(duration, disjunction(left, property))
+    formula = implication(triggerAtN, resBeforeN)
+  }
+
+  return persistsTo(formula, left)
+}
+
+function notWithin(property, duration, cond='null') {
+  return throughout(negate(property), duration, cond)
+}
+
+function after(property, duration, cond='null') {
+    return conjunction(throughout(negate(property), duration, cond),
+                        within(property,`${duration}PLUSONE`,cond))
+}
+
+
+// The disjunction:
+// disjunction(throughout(negate(property), `${duration}PLUSONE`, cond),
+//            within(property, duration ,cond)); does not work well when we have conditions
+// does not work in the context of conditions for past time.
+// The reason is that different disjuncts may be applicable for each subinterval
+// defined between a condition and the end of the interval.
+// Alternatively, I removed persists from within and for and added it at the notAfter
+// level. This was also wrong. The reason is that the disjunction can also
+// not be applied pointwise.
+// So we define notAfter directly and apply it pointwise to points
+// that are exactly n+1 steps from conditions, thus implicitly selecting
+// the right intervals for each condition. This is not a problem when conditions
+// are not present, because there is a single LEFT point in each interval.
+function notAfter(property, duration, cond='null') {
+  // focuspoint is at n+1 after the trigger; having the interval's left
+  // between focuspoint and trigger ivalidates the check because
+  // the trigger is outside the scope...
+  var focuspoint = occursAtTime(duration + 'PLUSONE', left);
+  var notAfter = disjunction(disjunction(occursWithinTime(duration, left), negate(property)),
+                              previous(occursBy(property, left)));
+
+  if (cond != 'null') {
+    let trigger = conditionTrigger(cond,left);
+    focuspoint = occursAtTime(duration + 'PLUSONE', trigger);
+    notAfter = disjunction(disjunction(occursWithinTime(duration, left), negate(property)),
+                          previous(occursWithinTime(duration, property)));
+  }
+
+  var formula = implication(focuspoint, notAfter);
+  return persistsTo(formula, left);
+}
+
+
+const EndPointRewriteRules = [
+    ['FFiM','(FiM and ((previous (historically not MODE)) or FTP))'],
+    ['FLiM','(LiM and previous (historically (not LiM)))'], // is this the same as above?
+    ['FiM', '(MODE and (FTP or (previous not MODE)))'],
+    ['LiM', '((not MODE) and (previous MODE))'],
+    ['FNiM', '((not MODE) and (FTP or (previous MODE)))'],
+    ['LNiM', '(MODE and (previous not MODE))'],
+    ['FTP', '(not previous TRUE)'] // should we leave this to the implementer of analysis tool?
+]
+
+const SMVEndPointRewriteRules = [
+    ['FFiM','(FiM & ((Y (H (!MODE))) | FTP))'],
+    ['FLiM','(LiM & (Y (H (!LiM))))'], // is this the same as above?
+    ['FiM', '(MODE & (FTP | (Y (!MODE))))'],
+    ['LiM', '((!MODE) & (Y MODE))'],
+    ['FNiM', '((!MODE) & (FTP | (Y MODE)))'],
+    ['LNiM', '(MODE & (Y (!MODE)))'],
+    ['FTP', '(!(Y TRUE))'] // should we leave this to the implementer of analysis tool?
+]
+
+function parenthesize(str) { return utilities.parenthesize(str)}
+function negate(str) { return utilities.negate(str)}
+function disjunction(str1, str2) {return utilities.disjunction([str1, str2])}
+function conjunction(str1, str2) {return utilities.conjunction([str1, str2])}
+
+
+exports.getEndPointRewriteRules = () => {
+  return EndPointRewriteRules
+}
+
+
+// we use after-until semantics to denote the fact that we enforce formulas
+// when an interval opens but does not close by the end of the trace;
+// we use after-until semantics as a default
+
+exports.getFormalization = (key, neg, leftP, rightP, options) => {
+
+  let specialCase =  utilities.matchingBase2(key, SpecialCases)
+  if (specialCase !== 'no_match' && specialCase[1](options)) return specialCase[2];
+
+  if (options.sem === 'infinite') return constants.nonsense_semantics;
+
+  // corresponds to baseform@ in the journal paper
+  var baseform_at = determineBaseForm(neg, key[2], key[1]);
+  if (baseform_at == 'no_match')
+    return constants.undefined_semantics
+  baseform_at = baseform_at.replace(/LEFTEND/g, leftP);
+
+
+  // the main formula is the one that holds for abstract interval [left, right)
+  // now examine if right is LAST, in which case we have [left, right]
+  // for this case, there are also no differences between after-until and between semantics
+  // but we must ensure that there exists a left point that opens the interval
+  if (rightP.includes('LAST')) {
+      if (!leftP.includes('FTP'))
+        return implication(('once ' + leftP), baseform_at);
+      else
+        return baseform_at; // once FTP is always true so not needed
+  }
+
+  // otherwise our right point is not the last point
+  // in this case we need to create two formulas depending on after-until or between
+
+  // note that right=FTP can only happen with scope before
+  // previously, I made baseform always include (RIGHT and not FTP) implies ...
+  // Now I optimize to only add that when mode is before, with rightOpt
+  // This is NOT affecting eotInterval
+
+  var rightOpt =  (key[0] == 'before') ? conjunction(rightP, negate('FTP')) : rightP;
+
+  var baseform = implication(rightOpt, ('previous ' + baseform_at));
+  var generalform = 'historically ' + baseform;
+
+  if (options.in == 'afterUntil') { // need to add part for interval that spans to end of execution
+      var eotInterval = implication(persistsTo(negate(rightP), leftP), baseform_at);
+      generalform = conjunction(generalform, eotInterval);
+  }
+
+  return generalform;
+}
+
+exports.EndPointsRewrite = (formula, format) => {
+  var rules = (format=='smv'? SMVEndPointRewriteRules : EndPointRewriteRules);
+  return utilities.replaceStrings(rules, formula);
+}

@@ -1,0 +1,42 @@
+name,result
+requirement:'',invalid
+requirement:' ',invalid
+requirement:' x',invalid
+version:'',invalid
+version:' ',invalid
+version:' x',invalid
+implementation:'',invalid
+implementation:' ',invalid
+implementation:' x',invalid
+evidence.id:'',invalid
+evidence.id:' ',invalid
+evidence.id:' x',invalid
+evidence.criterion:'',invalid
+evidence.criterion:' ',invalid
+evidence.criterion:' x',invalid
+evidence.requirement:'',invalid
+evidence.requirement:' ',invalid
+evidence.requirement:' x',invalid
+evidence.version:'',invalid
+evidence.version:' ',invalid
+evidence.version:' x',invalid
+evidence.implementation:'',invalid
+evidence.implementation:' ',invalid
+evidence.implementation:' x',invalid
+evidence.source:'',invalid
+evidence.source:' ',invalid
+evidence.source:' x',invalid
+evidence.reviewer:'',invalid
+evidence.reviewer:' ',invalid
+evidence.reviewer:' x',invalid
+empty_criterion,invalid
+duplicate_criterion,invalid
+duplicate_evidence,invalid
+duplicate_coverage,invalid
+unknown_coverage,invalid
+empty_class,invalid
+duplicate_candidate,invalid
+negative_mass,invalid
+fractional_mass,invalid
+zero_mass,invalid
+over_limit,invalid

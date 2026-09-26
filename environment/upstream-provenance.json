@@ -1,0 +1,15 @@
+{
+  "source": "https://github.com/NASA-SW-VnV/fret",
+  "downloaded": "2026-09-25 Europe/Istanbul",
+  "source_archive_sha256": "44F8095B595F8DE9A045A4BDCD2D8300DC22573534B6C32672D95BC550773716",
+  "package_version": "3.0",
+  "node": "20.19.0",
+  "installation": "native Windows source build; WSL not installed",
+  "build_exit_code": 0,
+  "optional_backends": "NuSMV, LTLSIM native executable, JKind, Kind2, Z3 not installed",
+  "tutorial_requirements": "REQ-001 and REQ-002 compiled using original FretSemantics.compile; imported via GUI",
+  "source_modifications": "No NASA source-code modifications; lifecycle scripts skipped; Electron installed separately",
+  "archive_sha256_verified": "44f8095b595f8de9a045a4bdcd2d8300dc22573534b6c32672d95bc550773716",
+  "vendored_location": "vendor/fret",
+  "source_commit": "Unknown: source was downloaded as a master-branch archive, not a Git clone. Archive SHA-256 identifies the exact snapshot."
+}

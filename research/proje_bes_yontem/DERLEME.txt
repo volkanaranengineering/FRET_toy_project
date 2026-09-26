@@ -1,0 +1,4 @@
+xelatex -interaction=nonstopmode -halt-on-error proje_bes_yontem.tex
+Run twice. Fonts: Cambria, Calibri, Consolas.
+MATLAB: build_project_methods(fullfile(pwd,'assets'))
+Illustrative successful scenarios, not real physical test data.

@@ -1,0 +1,27 @@
+{
+  "name": "fret",
+  "productName": "FRET",
+  "version": "3.0",
+  "description": "FRET",
+  "main": "./main.prod.js",
+  "author": {
+    "name": "Anastasia Mavridou`",
+    "email": "anastasia.mavridou@nasa.gov",
+    "url": "https://www.nasa.gov/intelligent-systems-division/robust-software-engineering/"
+  },
+  "scripts": {
+    "electron-rebuild": "node -r @babel/register ../internals/scripts/ElectronRebuild.js",
+    "postinstall": "npm run electron-rebuild"
+  },
+  "license": "Apache 2.0",
+  "dependencies": {
+    "jest-config": "^24.7.1",
+    "ltlsim-core": "file:../../tools/LTLSIM/ltlsim-core",
+    "pouchdb": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
+    "typeface-gloria-hallelujah": "0.0.54",
+    "typeface-indie-flower": "0.0.54",
+    "typeface-roboto": "0.0.54",
+    "lodash": "^4.17.13"
+  }
+}

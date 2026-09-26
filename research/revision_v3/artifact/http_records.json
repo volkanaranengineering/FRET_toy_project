@@ -1,0 +1,234 @@
+[
+  {
+    "mode": "correct",
+    "record": {
+      "requirement": "RFC9110-HEAD",
+      "version": "scope-v1",
+      "implementation": "correct",
+      "reviewed": true,
+      "conflict": false,
+      "criteria": [
+        "C0",
+        "C1"
+      ],
+      "alternatives": [
+        {
+          "id": "a",
+          "class": "A",
+          "mass": 1
+        },
+        {
+          "id": "b",
+          "class": "B",
+          "mass": 0
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E0",
+          "criterion": "C0",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "correct",
+          "source": "http_pairs.csv#correct",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        },
+        {
+          "id": "E1",
+          "criterion": "C1",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "correct",
+          "source": "http_pairs.csv#correct",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        }
+      ]
+    },
+    "status": {
+      "decision": "committed",
+      "acceptance": "accepted",
+      "closed": true,
+      "label_entropy": 0.0,
+      "class_entropy": 0.0,
+      "support": 1
+    }
+  },
+  {
+    "mode": "omit_length",
+    "record": {
+      "requirement": "RFC9110-HEAD",
+      "version": "scope-v1",
+      "implementation": "omit_length",
+      "reviewed": true,
+      "conflict": false,
+      "criteria": [
+        "C0",
+        "C1"
+      ],
+      "alternatives": [
+        {
+          "id": "a",
+          "class": "A",
+          "mass": 1
+        },
+        {
+          "id": "b",
+          "class": "B",
+          "mass": 0
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E0",
+          "criterion": "C0",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "omit_length",
+          "source": "http_pairs.csv#omit_length",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        },
+        {
+          "id": "E1",
+          "criterion": "C1",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "omit_length",
+          "source": "http_pairs.csv#omit_length",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        }
+      ]
+    },
+    "status": {
+      "decision": "committed",
+      "acceptance": "accepted",
+      "closed": true,
+      "label_entropy": 0.0,
+      "class_entropy": 0.0,
+      "support": 1
+    }
+  },
+  {
+    "mode": "body_bug",
+    "record": {
+      "requirement": "RFC9110-HEAD",
+      "version": "scope-v1",
+      "implementation": "body_bug",
+      "reviewed": true,
+      "conflict": false,
+      "criteria": [
+        "C0",
+        "C1"
+      ],
+      "alternatives": [
+        {
+          "id": "a",
+          "class": "A",
+          "mass": 1
+        },
+        {
+          "id": "b",
+          "class": "B",
+          "mass": 0
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E0",
+          "criterion": "C0",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "body_bug",
+          "source": "http_pairs.csv#body_bug",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "fail"
+        },
+        {
+          "id": "E1",
+          "criterion": "C1",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "body_bug",
+          "source": "http_pairs.csv#body_bug",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        }
+      ]
+    },
+    "status": {
+      "decision": "committed",
+      "acceptance": "failed",
+      "closed": true,
+      "label_entropy": 0.0,
+      "class_entropy": 0.0,
+      "support": 1
+    }
+  },
+  {
+    "mode": "length_bug",
+    "record": {
+      "requirement": "RFC9110-HEAD",
+      "version": "scope-v1",
+      "implementation": "length_bug",
+      "reviewed": true,
+      "conflict": false,
+      "criteria": [
+        "C0",
+        "C1"
+      ],
+      "alternatives": [
+        {
+          "id": "a",
+          "class": "A",
+          "mass": 1
+        },
+        {
+          "id": "b",
+          "class": "B",
+          "mass": 0
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E0",
+          "criterion": "C0",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "length_bug",
+          "source": "http_pairs.csv#length_bug",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "pass"
+        },
+        {
+          "id": "E1",
+          "criterion": "C1",
+          "requirement": "RFC9110-HEAD",
+          "version": "scope-v1",
+          "implementation": "length_bug",
+          "source": "http_pairs.csv#length_bug",
+          "reviewer": "automated-oracle-v1",
+          "approved": true,
+          "result": "fail"
+        }
+      ]
+    },
+    "status": {
+      "decision": "committed",
+      "acceptance": "failed",
+      "closed": true,
+      "label_entropy": 0.0,
+      "class_entropy": 0.0,
+      "support": 1
+    }
+  }
+]
