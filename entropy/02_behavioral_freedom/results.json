@@ -1,0 +1,58 @@
+{
+  "idea": 2,
+  "title": "Behavioral freedom and constraint information",
+  "context": {
+    "horizon": 6,
+    "trace_count": 4096,
+    "variables": [
+      "request",
+      "response"
+    ],
+    "domain": "Boolean",
+    "distribution": "uniform over all fixed-length Boolean traces",
+    "environment_assumptions": [],
+    "tick_duration": "unspecified; discrete steps only",
+    "semantics": "FRET ftExpanded finite semantics, including weak unfinished deadlines",
+    "scope": "exact at this horizon only; no unbounded equivalence or realizability claim",
+    "project_sha256": "1fca28a2bf2920d061f9c9a093b60c743ce045379d5171f31acc5d19f533e1d7",
+    "compiler_sha256": "a0cda458b5e64352c591adc517046fa79066639426765896a71642bc23bbb784"
+  },
+  "unconstrained_entropy_bits": 12.0,
+  "results": [
+    {
+      "reqid": "REQ-001",
+      "admissible_traces": 3848,
+      "status": "consistent",
+      "entropy_bits": 11.909893083770042,
+      "information_bits": 0.09010691622995814,
+      "marginal_given_other": {
+        "before": 3784,
+        "after": 3784,
+        "status": "consistent",
+        "entropy_bits": 11.885696373339394,
+        "information_bits": 0.0
+      }
+    },
+    {
+      "reqid": "REQ-002",
+      "admissible_traces": 3784,
+      "status": "consistent",
+      "entropy_bits": 11.885696373339394,
+      "information_bits": 0.11430362666060487,
+      "marginal_given_other": {
+        "before": 3848,
+        "after": 3784,
+        "status": "consistent",
+        "entropy_bits": 11.885696373339394,
+        "information_bits": 0.024196710430646706
+      }
+    }
+  ],
+  "conjunction": {
+    "admissible_traces": 3784,
+    "status": "consistent",
+    "entropy_bits": 11.885696373339394,
+    "information_bits": 0.11430362666060487
+  },
+  "interpretation": "Freedom is not ambiguity, quality, correctness, or acceptance. Counts are not counts of implementations."
+}

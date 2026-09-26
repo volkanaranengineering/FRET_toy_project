@@ -1,0 +1,156 @@
+{
+  "requirements": [
+    {
+      "reqid": "E2-REQ-001-original",
+      "fulltext": "when request the ResponseSystem shall within 3 ticks satisfy response",
+      "project": "Entropy_02_behavioral_freedom",
+      "parent_reqid": "",
+      "status": "",
+      "rationale": "Behavioral freedom and constraint information. Source: REQ-001-original. Horizon 6 ticks. Analysis snapshot: {\"admissible_traces\": 3848, \"entropy_bits\": 11.909893083770042, \"information_bits\": 0.09010691622995814}. Experimental priors/variants are analyst assumptions, not NASA ambiguity annotations. Acceptance not assessed. See the companion entropy report for full context.",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "regular",
+        "probability": "null",
+        "timing": "within",
+        "response": "satisfaction",
+        "variables": [
+          "request",
+          "response"
+        ],
+        "qualifier_word": "when",
+        "pre_condition": "(request)",
+        "regular_condition": "(request)",
+        "conditionTextRange": [
+          0,
+          11
+        ],
+        "component_name": "ResponseSystem",
+        "componentTextRange": [
+          13,
+          30
+        ],
+        "duration": "3",
+        "timingTextRange": [
+          38,
+          51
+        ],
+        "post_condition": "(response)",
+        "responseTextRange": [
+          53,
+          68
+        ],
+        "diagramVariables": "TC = <b><i>(request)</i></b>,  n = <b><i>3</i></b>, Response = <b><i>(response)</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(request)</i></b> is true and any point in the interval where <b><i>(request)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: first point in the interval if <b><i>(request)</i></b> is true and any point in the interval where <b><i>(request)</i></b> becomes true (from false).<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_regular_within_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "request",
+        "regular_condition_unexp_ft": "request",
+        "regular_condition_unexp_pctl": "request",
+        "regular_condition_SMV_pt": "request",
+        "regular_condition_SMV_ft": "request",
+        "regular_condition_MLTL_ft": "request",
+        "regular_condition_PRISM_pctl": "request",
+        "post_condition_unexp_pt": "response",
+        "post_condition_unexp_ft": "response",
+        "post_condition_unexp_pctl": "response",
+        "post_condition_SMV_pt": "response",
+        "post_condition_SMV_ft": "response",
+        "post_condition_MLTL_ft": "response",
+        "post_condition_PRISM_pctl": "response",
+        "ft": "((LAST V (((! request) & ((! LAST) & (X request))) -> (X ((F[<=3] response) | (F[<3] LAST))))) & (request -> ((F[<=3] response) | (F[<3] LAST))))",
+        "pt": "(H ((O[=3] ((request & (Z (! request))) & (! response))) -> (O[<3] ((Z FALSE) | response))))",
+        "pctl": "P>=1[((G (((! request) & (X request)) => (X (P>=1[(F<=3 response)])))) & (request => (P>=1[(F[<=3] response)])))]",
+        "ptExpanded": "(H ((O[3,3] ((request & (Z (! request))) & (! response))) -> (O[0,2] ((Z FALSE) | response))))",
+        "CoCoSpecCode": "H((OT(3, 3, ((request and ZtoPre(not (request))) and not (response))) => OT(2, 0, (ZtoPre(false) or response))))",
+        "ftExpanded": "((LAST V (((! request) & ((! LAST) & (X request))) -> (X ((F[0,3] response) | (F[0,2] LAST))))) & (request -> ((F[0,3] response) | (F[0,2] LAST))))",
+        "pctlExpanded": "P>=1[((G (((! request) & (X request)) => (X (P>=1[(F<=3 response)])))) & (request => (P>=1[(F[<=3] response)])))]",
+        "ftInfAUExpanded": "((G (((! request) & (X request)) -> (X (F[0,3] response)))) & (request -> (F[0,3] response)))",
+        "mltlExpanded": "((G[0,M] (((! p0) & (F[1,1] p0)) -> (F[1,4] p1))) & (p0 -> (F[0,3] p1)))",
+        "WESTMapping": "p0: request<br/>p1: response",
+        "R2U2Code": "((((! request) && (F[1,1] request)) -> (F[1,4] response)) && (((TAU == 0) && request) -> (F[0,3] response)))",
+        "component": "ResponseSystem"
+      }
+    },
+    {
+      "reqid": "E2-REQ-002-original",
+      "fulltext": "whenever request the ResponseSystem shall within 3 ticks satisfy response",
+      "project": "Entropy_02_behavioral_freedom",
+      "parent_reqid": "",
+      "status": "",
+      "rationale": "Behavioral freedom and constraint information. Source: REQ-002-original. Horizon 6 ticks. Analysis snapshot: {\"admissible_traces\": 3784, \"entropy_bits\": 11.885696373339394, \"information_bits\": 0.11430362666060487}. Experimental priors/variants are analyst assumptions, not NASA ambiguity annotations. Acceptance not assessed. See the companion entropy report for full context.",
+      "semantics": {
+        "type": "nasa",
+        "scope": {
+          "type": "null"
+        },
+        "condition": "holding",
+        "probability": "null",
+        "timing": "within",
+        "response": "satisfaction",
+        "variables": [
+          "request",
+          "response"
+        ],
+        "qualifier_word": "whenever",
+        "pre_condition": "(request)",
+        "regular_condition": "(request)",
+        "conditionTextRange": [
+          0,
+          15
+        ],
+        "component_name": "ResponseSystem",
+        "componentTextRange": [
+          17,
+          34
+        ],
+        "duration": "3",
+        "timingTextRange": [
+          42,
+          55
+        ],
+        "post_condition": "(response)",
+        "responseTextRange": [
+          57,
+          72
+        ],
+        "diagramVariables": "CC = <b><i>(request)</i></b>,  n = <b><i>3</i></b>, Response = <b><i>(response)</i></b>.",
+        "description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(request)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+        "probabilistic_description": "SCOPE: in the interval defined by the entire execution.<br>TRIGGER: every point in the interval where <b><i>(request)</i></b> is true.<br>REQUIRED BEHAVIOR: for every trigger, with probability >=1, <b><i>(response)</i></b> must hold at some point with distance <= <b><i>3</i></b> from the trigger (i.e., at trigger, trigger+1, ..., or trigger+<b><i>3</i></b>). If the interval ends sooner than trigger+<b><i>3</i></b>, then <b><i>(response)</i></b> need not hold.",
+        "diagram": "_media/user-interface/examples/svgDiagrams/null_holding_within_satisfaction.svg",
+        "scope_mode_pt": "BAD_PT",
+        "scope_mode_ft": "BAD_FT",
+        "regular_condition_unexp_pt": "request",
+        "regular_condition_unexp_ft": "request",
+        "regular_condition_unexp_pctl": "request",
+        "regular_condition_SMV_pt": "request",
+        "regular_condition_SMV_ft": "request",
+        "regular_condition_MLTL_ft": "request",
+        "regular_condition_PRISM_pctl": "request",
+        "post_condition_unexp_pt": "response",
+        "post_condition_unexp_ft": "response",
+        "post_condition_unexp_pctl": "response",
+        "post_condition_SMV_pt": "response",
+        "post_condition_SMV_ft": "response",
+        "post_condition_MLTL_ft": "response",
+        "post_condition_PRISM_pctl": "response",
+        "ft": "(LAST V (request -> ((F[<=3] response) | (F[<3] LAST))))",
+        "pt": "(H ((O[=3] (request & (! response))) -> (O[<3] ((Z FALSE) | response))))",
+        "pctl": "P>=1[(G (request => (P>=1[(F<=3 response)])))]",
+        "ptExpanded": "(H ((O[3,3] (request & (! response))) -> (O[0,2] ((Z FALSE) | response))))",
+        "CoCoSpecCode": "H((OT(3, 3, (request and not (response))) => OT(2, 0, (ZtoPre(false) or response))))",
+        "ftExpanded": "(LAST V (request -> ((F[0,3] response) | (F[0,2] LAST))))",
+        "pctlExpanded": "P>=1[(G (request => (P>=1[(F<=3 response)])))]",
+        "ftInfAUExpanded": "(G (request -> (F[0,3] response)))",
+        "mltlExpanded": "(G[0,M] (p0 -> (F[0,3] p1)))",
+        "WESTMapping": "p0: request<br/>p1: response",
+        "R2U2Code": "(request -> (F[0,3] response))",
+        "component": "ResponseSystem"
+      }
+    }
+  ]
+}

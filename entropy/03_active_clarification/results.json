@@ -1,0 +1,382 @@
+{
+  "idea": 3,
+  "title": "Information-guided clarification",
+  "context": {
+    "horizon": 6,
+    "trace_count": 4096,
+    "variables": [
+      "request",
+      "response"
+    ],
+    "domain": "Boolean",
+    "distribution": "uniform over all fixed-length Boolean traces",
+    "environment_assumptions": [],
+    "tick_duration": "unspecified; discrete steps only",
+    "semantics": "FRET ftExpanded finite semantics, including weak unfinished deadlines",
+    "scope": "exact at this horizon only; no unbounded equivalence or realizability claim",
+    "project_sha256": "1fca28a2bf2920d061f9c9a093b60c743ce045379d5171f31acc5d19f533e1d7",
+    "compiler_sha256": "a0cda458b5e64352c591adc517046fa79066639426765896a71642bc23bbb784"
+  },
+  "results": [
+    {
+      "reqid": "REQ-001",
+      "fulltext": "when request the ResponseSystem shall within 3 ticks satisfy response",
+      "initial_entropy_bits": 1.5,
+      "classes": [
+        {
+          "members": [
+            "REQ-001-original",
+            "REQ-001-punctuation_alias"
+          ],
+          "probability": 0.5
+        },
+        {
+          "members": [
+            "REQ-001-tighter_deadline"
+          ],
+          "probability": 0.25
+        },
+        {
+          "members": [
+            "REQ-001-alternate_trigger"
+          ],
+          "probability": 0.25
+        }
+      ],
+      "questions": [
+        {
+          "trace": [
+            {
+              "tick": 0,
+              "request": true,
+              "response": true
+            },
+            {
+              "tick": 1,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 2,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 3,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 4,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 5,
+              "request": false,
+              "response": false
+            }
+          ],
+          "accepts_by_class": [
+            true,
+            false,
+            false
+          ],
+          "expected_information_gain_bits": 1.0,
+          "yes": {
+            "probability": 0.5,
+            "posterior": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "entropy_bits": -0.0
+          },
+          "no": {
+            "probability": 0.5,
+            "posterior": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "entropy_bits": 1.0
+          }
+        },
+        {
+          "trace": [
+            {
+              "tick": 0,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 1,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 2,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 3,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 4,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 5,
+              "request": false,
+              "response": false
+            }
+          ],
+          "accepts_by_class": [
+            true,
+            false,
+            true
+          ],
+          "expected_information_gain_bits": 0.8112781244591328,
+          "yes": {
+            "probability": 0.75,
+            "posterior": [
+              0.6666666666666666,
+              0.0,
+              0.3333333333333333
+            ],
+            "entropy_bits": 0.9182958340544896
+          },
+          "no": {
+            "probability": 0.25,
+            "posterior": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "entropy_bits": -0.0
+          }
+        },
+        {
+          "trace": [
+            {
+              "tick": 0,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 1,
+              "request": true,
+              "response": true
+            },
+            {
+              "tick": 2,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 3,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 4,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 5,
+              "request": false,
+              "response": false
+            }
+          ],
+          "accepts_by_class": [
+            true,
+            true,
+            false
+          ],
+          "expected_information_gain_bits": 0.8112781244591328,
+          "yes": {
+            "probability": 0.75,
+            "posterior": [
+              0.6666666666666666,
+              0.3333333333333333,
+              0.0
+            ],
+            "entropy_bits": 0.9182958340544896
+          },
+          "no": {
+            "probability": 0.25,
+            "posterior": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "entropy_bits": -0.0
+          }
+        }
+      ],
+      "question": "Should this complete finite execution be permitted by the intended requirement?",
+      "answer_status": "unanswered; no stakeholder response simulated",
+      "outside_candidate_answers": {
+        "neither": "reopen candidate set; no Bayesian update",
+        "unsure": "retain current distribution"
+      },
+      "answer_model": "reliable binary answer; equal question cost; hypothesis-conditional predictions"
+    },
+    {
+      "reqid": "REQ-002",
+      "fulltext": "whenever request the ResponseSystem shall within 3 ticks satisfy response",
+      "initial_entropy_bits": 1.5,
+      "classes": [
+        {
+          "members": [
+            "REQ-002-original",
+            "REQ-002-punctuation_alias"
+          ],
+          "probability": 0.5
+        },
+        {
+          "members": [
+            "REQ-002-tighter_deadline"
+          ],
+          "probability": 0.25
+        },
+        {
+          "members": [
+            "REQ-002-alternate_trigger"
+          ],
+          "probability": 0.25
+        }
+      ],
+      "questions": [
+        {
+          "trace": [
+            {
+              "tick": 0,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 1,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 2,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 3,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 4,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 5,
+              "request": false,
+              "response": false
+            }
+          ],
+          "accepts_by_class": [
+            true,
+            false,
+            true
+          ],
+          "expected_information_gain_bits": 0.8112781244591328,
+          "yes": {
+            "probability": 0.75,
+            "posterior": [
+              0.6666666666666666,
+              0.0,
+              0.3333333333333333
+            ],
+            "entropy_bits": 0.9182958340544896
+          },
+          "no": {
+            "probability": 0.25,
+            "posterior": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "entropy_bits": -0.0
+          }
+        },
+        {
+          "trace": [
+            {
+              "tick": 0,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 1,
+              "request": true,
+              "response": true
+            },
+            {
+              "tick": 2,
+              "request": true,
+              "response": false
+            },
+            {
+              "tick": 3,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 4,
+              "request": false,
+              "response": false
+            },
+            {
+              "tick": 5,
+              "request": false,
+              "response": false
+            }
+          ],
+          "accepts_by_class": [
+            false,
+            false,
+            true
+          ],
+          "expected_information_gain_bits": 0.8112781244591328,
+          "yes": {
+            "probability": 0.25,
+            "posterior": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "entropy_bits": -0.0
+          },
+          "no": {
+            "probability": 0.75,
+            "posterior": [
+              0.6666666666666666,
+              0.3333333333333333,
+              0.0
+            ],
+            "entropy_bits": 0.9182958340544896
+          }
+        }
+      ],
+      "question": "Should this complete finite execution be permitted by the intended requirement?",
+      "answer_status": "unanswered; no stakeholder response simulated",
+      "outside_candidate_answers": {
+        "neither": "reopen candidate set; no Bayesian update",
+        "unsure": "retain current distribution"
+      },
+      "answer_model": "reliable binary answer; equal question cost; hypothesis-conditional predictions"
+    }
+  ]
+}

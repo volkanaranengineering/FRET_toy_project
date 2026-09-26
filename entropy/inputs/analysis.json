@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "originals": [
+    {
+      "reqid": "REQ-001",
+      "fulltext": "when request the ResponseSystem shall within 3 ticks satisfy response"
+    },
+    {
+      "reqid": "REQ-002",
+      "fulltext": "whenever request the ResponseSystem shall within 3 ticks satisfy response"
+    }
+  ],
+  "hypotheses": {
+    "REQ-001": [
+      {
+        "id": "REQ-001-original",
+        "name": "original",
+        "prior": 0.25,
+        "trigger": "rising",
+        "deadline": 3
+      },
+      {
+        "id": "REQ-001-punctuation_alias",
+        "name": "punctuation_alias",
+        "prior": 0.25,
+        "trigger": "rising",
+        "deadline": 3
+      },
+      {
+        "id": "REQ-001-tighter_deadline",
+        "name": "tighter_deadline",
+        "prior": 0.25,
+        "trigger": "rising",
+        "deadline": 2
+      },
+      {
+        "id": "REQ-001-alternate_trigger",
+        "name": "alternate_trigger",
+        "prior": 0.25,
+        "trigger": "holding",
+        "deadline": 3
+      }
+    ],
+    "REQ-002": [
+      {
+        "id": "REQ-002-original",
+        "name": "original",
+        "prior": 0.25,
+        "trigger": "holding",
+        "deadline": 3
+      },
+      {
+        "id": "REQ-002-punctuation_alias",
+        "name": "punctuation_alias",
+        "prior": 0.25,
+        "trigger": "holding",
+        "deadline": 3
+      },
+      {
+        "id": "REQ-002-tighter_deadline",
+        "name": "tighter_deadline",
+        "prior": 0.25,
+        "trigger": "holding",
+        "deadline": 2
+      },
+      {
+        "id": "REQ-002-alternate_trigger",
+        "name": "alternate_trigger",
+        "prior": 0.25,
+        "trigger": "rising",
+        "deadline": 3
+      }
+    ]
+  },
+  "prior_source": "Illustrative analyst prior: original meaning 0.5, tighter deadline 0.25, alternate trigger 0.25. Original mass is split between two equivalent spellings.",
+  "candidate_completeness": "unassessed",
+  "acceptance": "not assessed",
+  "source": "tutorial/FRET_Tutorial_TR.json",
+  "source_sha256": "6f32e7bc38ac15392564908d8087a74db607914323a7c9aff87d7c753e0aa80b",
+  "compiler_sha256": "a0cda458b5e64352c591adc517046fa79066639426765896a71642bc23bbb784",
+  "compiled_candidates": 8
+}

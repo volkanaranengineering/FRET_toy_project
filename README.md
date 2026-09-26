@@ -6,6 +6,7 @@ Research direction: **Volkan Aran**. Formalization, code, documentation and anal
 
 ## Start here
 
+- **[Three entropy implementations on the two setup requirements](entropy/README.md)** — separate semantic interpretation, behavioral freedom, and active clarification experiments; [interactive results](entropy/index.html).
 - **[Complete browsable FRET output](projects/index.html)** — clone/download and open locally; GitHub displays HTML source, not the rendered report.
 - **[All 10 projects, importable JSON](projects/all-projects.json)** — import using FRET's downward-arrow button.
 - **[Turkish FRET tutorial, PDF](tutorial/NASA_FRET_Turkce_Tutorial.pdf)** — original worked example with native application screenshots.

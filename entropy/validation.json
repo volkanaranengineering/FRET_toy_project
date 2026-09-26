@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "test_methods": 8,
+  "formula_oracle_comparisons": 43680,
+  "horizons_checked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "scope": "Independent bounded obligation oracle vs generated FRET formula evaluator; mathematical edge cases. Not external model checking or user-study validation."
+}
