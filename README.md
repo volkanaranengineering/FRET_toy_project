@@ -6,6 +6,7 @@ Research direction: **Volkan Aran**. Formalization, code, documentation and anal
 
 ## Start here
 
+- **[Critical literature survey and research gap](entropy/literature/README.md)** — 19-page report; 18 journal papers (2006–2026 window), supporting and counter-evidence, a separate ARTEMIS comparison, and a proposed evaluation protocol.
 - **[Three entropy implementations on the two setup requirements](entropy/README.md)** — separate semantic interpretation, behavioral freedom, and active clarification experiments; [interactive results](entropy/index.html).
 - **[Complete browsable FRET output](projects/index.html)** — clone/download and open locally; GitHub displays HTML source, not the rendered report.
 - **[All 10 projects, importable JSON](projects/all-projects.json)** — import using FRET's downward-arrow button.

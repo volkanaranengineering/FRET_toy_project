@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "pages": 19,
+  "journal_records": 18,
+  "supplementary_conference_records": 1,
+  "unique_dois": 19,
+  "checks": [
+    "Expected page boundaries and headings",
+    "All evidence IDs appear",
+    "Distinct DOI records",
+    "Journal/conference separation"
+  ],
+  "visual_review": "PASS: all 19 pages rendered with Poppler and visually inspected; no clipping, overlaps or missing glyphs observed."
+}
