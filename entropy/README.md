@@ -1,5 +1,7 @@
 # Three separate entropy experiments on the FRET setup requirements
 
+**[Step-by-step class notes (15-page PDF)](tutorial/FRET_Entropy_Class_Notes.pdf)** explain every measure, the hand calculations, and how to use the outputs. [Editable LaTeX and build instructions](tutorial/README.md).
+
 Open **[the interactive report](index.html)** locally. Each implementation also has its own script, JSON results, and HTML page:
 
 | Idea | Implementation | Output |

@@ -1,0 +1,587 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,xcolor,fancyhdr,url}
+\definecolor{navy}{RGB}{24,48,73}
+\definecolor{teal}{RGB}{15,103,113}
+\pdfinfo{/Title (FRET Entropy: Step-by-Step Class Notes) /Author (Volkan Aran; developed with OpenAI Codex)}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small FRET ENTROPY\quad |\quad Worked class notes}
+\fancyhead[R]{\small Two setup requirements}
+\fancyfoot[L]{\small Reproducible bounded experiments}
+\fancyfoot[R]{\small\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\lesson}[2]{\section*{\textcolor{navy}{#1. #2}}}
+\newcommand{\key}[1]{\begin{quote}\color{teal}\textbf{Key idea.} #1\end{quote}}
+\newcommand{\req}{\mathit{request}}
+\newcommand{\resp}{\mathit{response}}
+\newcommand{\bits}{\,\mathrm{bits}}
+\begin{document}
+\thispagestyle{empty}
+{\color{teal}\large RESEARCH METHODS / CLASS NOTES}\par
+\vspace{12mm}
+{\color{navy}\Huge\bfseries Understanding Entropy\\[3mm]in FRET Requirements}\par
+\vspace{5mm}
+{\Large Three separate ideas, calculated step by step}\par
+\vspace{8mm}
+\textbf{Worked system:} a Boolean request--response component.\\
+\textbf{Examples:} \texttt{when request} and \texttt{whenever request}, each with a three-tick deadline.\\
+\textbf{Analysis baseline:} \texttt{FRET\_toy\_project}, commit \texttt{6443ce8}.\\
+\textbf{Prepared:} 27 September 2026.
+
+\vspace{5mm}
+\key{An entropy number is meaningful only after specifying what varies, which outcomes are possible, and how probabilities are assigned. The three experiments use different outcomes and must be interpreted separately.}
+
+\begin{center}
+\begin{tabular}{p{39mm}p{94mm}}
+\toprule
+\textbf{Experiment} & \textbf{Question answered}\\\midrule
+Meaning entropy & Which candidate meaning is intended?\\[3pt]
+Behavioral entropy & How many finite behaviors remain permitted?\\[3pt]
+Clarification gain & How much uncertainty should the next question remove?\\\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Learning outcomes.} After these notes, you should be able to calculate Shannon entropy by hand, distinguish spellings from meanings, enumerate the setup example's permitted traces, update interpretation probabilities after an answer, and reproduce the implemented outputs.
+
+\textbf{Prerequisites.} Basic probability, Boolean logic, and logarithms. All temporal concepts used in the examples are introduced here.
+
+\textbf{Scope.} These are companion analyses using real FRET-generated formulas. They do not add a native entropy panel to NASA FRET. Experimental candidate meanings and probabilities are analyst assumptions; no stakeholder study, unbounded proof, or engineering acceptance is claimed.
+
+\vfill
+\small Research direction: Volkan Aran. Implementation and notes developed with OpenAI Codex under human direction. NASA FRET and the research foundations are credited on the final page.
+\newpage
+
+\lesson{1}{Read the requirements before calculating}
+The two statements come from the setup tutorial export. They are already precise FRETish requirements; the experiments do not establish that these statements are ambiguous.
+
+\textbf{REQ-001}
+\begin{quote}\ttfamily when request the ResponseSystem shall within 3 ticks satisfy response\end{quote}
+\textbf{REQ-002}
+\begin{quote}\ttfamily whenever request the ResponseSystem shall within 3 ticks satisfy response\end{quote}
+
+\begin{tabular}{p{31mm}p{109mm}}
+\toprule
+\textbf{Term} & \textbf{Meaning in this experiment}\\\midrule
+\texttt{request} & Boolean input: false (0) or true (1).\\
+\texttt{response} & Boolean proposition: false (0) or true (1).\\
+\texttt{when} & Trigger when request changes from false to true; an initially true request also triggers.\\
+\texttt{whenever} & Trigger at every tick at which request is true.\\
+\texttt{within 3 ticks} & Response may be true at the trigger tick or at one of the next three ticks.\\
+\texttt{satisfy} & The response proposition must hold as specified by the timing clause.\\\bottomrule
+\end{tabular}
+
+Let \(r_t\) and \(s_t\) denote request and response at tick \(t\). The trigger predicates are
+\begin{align*}
+T_{\mathrm{when}}(t)&=r_t\land(t=0\ \lor\ \neg r_{t-1}),\\
+T_{\mathrm{whenever}}(t)&=r_t.
+\end{align*}
+The first expression is interpreted piecewise: at tick zero there is no previous sample.
+
+\textbf{A distinguishing execution.}
+\begin{center}
+\begin{tabular}{c|ccccc}
+\toprule
+Tick & 0 & 1 & 2 & 3 & 4\\\midrule
+Request & 1 & 1 & 1 & 1 & 1\\
+Response & 1 & 0 & 0 & 0 & 0\\\bottomrule
+\end{tabular}
+\end{center}
+REQ-001 triggers only at tick 0 and is satisfied immediately. REQ-002 also triggers at tick 1; there is no response at ticks 1--4, so that obligation fails. One response need not satisfy every later trigger.
+
+\key{A tick is a discrete sample, not an assumed second. No physical duration is specified in this setup.}
+\newpage
+
+\lesson{2}{Understand finite traces and FRET's boundary rule}
+A \emph{trace} is a sequence of signal values. At horizon \(h\), the trace has ticks \(0,\ldots,h-1\). Horizon six means six samples, not six intervals after an initial sample.
+
+For a trigger at tick \(t\) with deadline \(d\), the implemented finite semantics require
+\[
+\underbrace{\exists j\in[t,\min(t+d,h-1)]:s_j=1}_{\text{a response is observed}}
+\quad\lor\quad
+\underbrace{h-1<t+d}_{\text{the trace ends before the deadline}}.
+\]
+This is FRET's weak treatment of an unfinished deadline. If the deadline tick itself is present, a missing response fails. The boundary rule is part of the formal semantics, not missing data silently treated as success by our analyzer.
+
+\begin{center}
+\begin{tabular}{cccp{70mm}}
+\toprule
+\(t\) & \(d\) & Last tick & No response observed: result\\\midrule
+0 & 3 & 2 & Permitted: deadline has not expired.\\
+0 & 3 & 3 & Fails: the full deadline window is present.\\
+3 & 3 & 5 & Permitted: tick 6 is beyond the trace.\\
+3 & 2 & 5 & Fails: deadline expires at tick 5.\\\bottomrule
+\end{tabular}
+\end{center}
+
+At horizon six and deadline three, only triggers at ticks \(0,1,2\) can fail. Triggers at ticks \(3,4,5\) cannot yet fail under this finite convention.
+
+\textbf{Reading the generated formulas.} The implementation evaluates FRET's \texttt{ftExpanded} output. The subset needed here includes
+\begin{center}
+\begin{tabular}{cp{112mm}}
+\toprule
+Symbol & Interpretation\\\midrule
+\(\neg,\land,\lor,\rightarrow\) & Not, and, or, implies.\\
+\(X\phi\) & Strong next: \(\phi\) holds at the next tick; false if no next tick exists.\\
+\(F_{[a,b]}\phi\) & \(\phi\) holds at some available tick between offsets \(a\) and \(b\).\\
+\(\mathrm{LAST}\) & True only at the last tick.\\
+\(\phi\,V\,\psi\) & Release: \(\psi\) persists until and including a point satisfying \(\phi\), or through the end if that point never occurs.\\\bottomrule
+\end{tabular}
+\end{center}
+
+\key{Changing the horizon or replacing weak unfinished deadlines with another convention changes the experiment. Always report the boundary rule beside a behavioral count.}
+\newpage
+
+\lesson{3}{Shannon entropy from the beginning}
+Let a discrete random variable \(Z\) have possible outcomes \(z_1,\ldots,z_K\), with probabilities \(p_1,\ldots,p_K\). Require
+\[
+p_i\geq0,\qquad \sum_{i=1}^{K}p_i=1.
+\]
+The information associated with observing outcome \(z_i\) is its \emph{surprisal}, \(-\log_2 p_i\). Shannon entropy is the expected surprisal:
+\[
+\boxed{H(Z)=-\sum_{i:p_i>0}p_i\log_2 p_i.}
+\]
+The base-two logarithm gives units of bits. By convention, a zero-probability outcome contributes zero; the program skips that term instead of evaluating \(\log_2 0\).
+
+\textbf{Example A: two equally likely meanings.}
+\[
+H=-\tfrac12\log_2\tfrac12-\tfrac12\log_2\tfrac12
+=\tfrac12+\tfrac12=1\bits.
+\]
+\textbf{Example B: a confident but non-certain distribution.}
+\[
+H(0.9,0.1)=-0.9\log_2(0.9)-0.1\log_2(0.1)
+\approx0.468996\bits.
+\]
+\textbf{Example C: a single remaining outcome.}
+\[
+H(1,0)=-1\log_2 1=0\bits.
+\]
+Zero says the distribution has one supported outcome. It does not show that the outcome is correct, that an omitted alternative is impossible, or that the system passed its tests.
+
+\textbf{Uniform shortcut.} If each of \(K\) outcomes has probability \(1/K\),
+\[
+H=-K\frac1K\log_2\frac1K=\log_2K.
+\]
+Thus 4 equally likely outcomes give 2 bits, and 4,096 give 12 bits. For a fixed \(K\), a uniform distribution has the maximum entropy \(\log_2 K\).
+
+\textbf{Weights versus probabilities.} The interactive meaning page accepts nonnegative weights \(w_i\), then uses \(p_i=w_i/\sum_jw_j\). For weights \((2,1,1)\), probabilities are \((0.5,0.25,0.25)\). An all-zero vector is invalid. The Python analysis inputs require probabilities that already sum to one.
+
+\key{Entropy measures a specified distribution. It cannot supply its own probabilities or certify that the listed outcomes are complete.}
+\newpage
+
+\lesson{4}{Idea 1: group spellings into meanings}
+For each setup requirement, the experiment constructs the following candidates. These are research inputs, not measured interpretations supplied by NASA or a stakeholder.
+
+\begin{center}
+\begin{tabular}{p{34mm}p{76mm}r}
+\toprule
+Candidate & Change relative to the original & Prior\\\midrule
+Original & Unchanged FRETish statement & 0.25\\
+Punctuation alias & Add a final period; same formal meaning & 0.25\\
+Tighter deadline & Replace 3 ticks with 2 ticks & 0.25\\
+Alternate trigger & Exchange \texttt{when} and \texttt{whenever} & 0.25\\\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: calculate entropy over candidate labels.}
+There are four equally weighted labels, so
+\[
+H_{\mathrm{labels}}=-4(0.25\log_2 0.25)=2\bits.
+\]
+
+\textbf{Step 2: compile and compare behaviors.}
+FRET compiles every candidate. The companion evaluator calculates each formula's true/false value on every six-tick trace. Candidates with identical 4,096-entry truth vectors form a bounded meaning class.
+
+\textbf{Step 3: sum probability mass within each class.}
+At horizon six, the original and punctuation alias coincide. The other candidates are distinguishable. Class probabilities become
+\[
+(p_1,p_2,p_3)=(0.25+0.25,\ 0.25,\ 0.25)=(0.5,0.25,0.25).
+\]
+
+\textbf{Step 4: calculate meaning entropy.}
+\begin{align*}
+H_{\mathrm{meaning}}
+&=-0.5\log_2 0.5-0.25\log_2 0.25-0.25\log_2 0.25\\
+&=0.5+0.5+0.5=\boxed{1.5\bits}.
+\end{align*}
+Both setup examples have this same experimental result. If we retain only the original precise FRETish statement, its single-interpretation baseline is zero bits.
+
+\textbf{Why the grouping matters.} Splitting a meaning's fixed probability mass among equivalent spellings must not increase uncertainty about meaning. Adding labels and then assigning a fresh uniform prior is a different operation; it can change class masses.
+
+\key{The equivalence claim is bounded. At two ticks these candidates all accept every trace under the weak deadline convention, so they form one bounded class. That does not prove they are equivalent for longer executions.}
+\newpage
+
+\lesson{5}{Idea 2: define the behavioral universe}
+Here the random variable is a \emph{finite trace}, not an intended meaning. Fix the following experimental settings before counting:
+\begin{itemize}
+\item Two Boolean signals: request and response.
+\item Six ticks: \(0,1,2,3,4,5\).
+\item No restrictions on the environment or on consecutive signal values.
+\item FRET's finite semantics, including unfinished deadlines.
+\item A uniform distribution over all trace assignments.
+\end{itemize}
+At each tick there are four signal pairs: \((0,0),(0,1),(1,0),(1,1)\). Therefore
+\[
+|\Omega_6|=4^6=2^{12}=4,096,\qquad H(\Omega_6)=12\bits.
+\]
+For a requirement set \(R\), let \(S_6(R)\subseteq\Omega_6\) be the traces satisfying all requirements in \(R\). Conditioning a uniform prior on membership in a nonempty set leaves a uniform distribution on that set. Hence
+\[
+\boxed{H_{\mathrm{behavior}}(R;6)=\log_2|S_6(R)|.}
+\]
+The additional information supplied by requirement \(r\) is
+\[
+\boxed{\Delta I(r\mid R;6)=\log_2\frac{|S_6(R)|}{|S_6(R\cup\{r\})|}.}
+\]
+For these uniform sets this equals the difference in behavioral entropies. It also equals \(-\log_2 P(r\mid R)\), with probability induced by the uniform trace distribution. It is not a general claim that conditioning always decreases realized entropy under arbitrary nonuniform priors.
+
+\textbf{Warm-up.} Suppose a requirement leaves 256 of 1,024 permitted traces:
+\[
+H_{\mathrm{before}}=10,\quad H_{\mathrm{after}}=8,\quad
+\Delta I=\log_2(1,024/256)=2\bits.
+\]
+If the count is unchanged, marginal information is zero. If the remaining set is empty, conditioning is undefined: report an inconsistent result, not zero entropy. A singleton set has zero behavioral entropy, but does not prove the sole behavior is safe or intended.
+
+\key{More permitted behavior is more freedom within this universe. It is not automatically lower requirement quality. These are counts of traces, not implementations or physical designs.}
+\newpage
+
+\lesson{6}{Derive REQ-001's 3,848 traces by hand}
+There are 12 free Boolean values before constraints: six requests and six responses. To count satisfying traces, count the failing traces and subtract them from 4,096.
+
+Let \(E_t\) mean that the \texttt{when} obligation triggered at tick \(t\) fails. Only \(t=0,1,2\) can fail, because later deadlines extend beyond tick 5.
+
+\begin{center}
+\begin{tabular}{cp{83mm}rr}
+\toprule
+Event & Values fixed by the failure event & Free bits & Count\\\midrule
+\(E_0\) & \(r_0=1\), \(s_0=s_1=s_2=s_3=0\) & 7 & 128\\[3pt]
+\(E_1\) & \(r_0=0,r_1=1\), \(s_1=\cdots=s_4=0\) & 6 & 64\\[3pt]
+\(E_2\) & \(r_1=0,r_2=1\), \(s_2=\cdots=s_5=0\) & 6 & 64\\\bottomrule
+\end{tabular}
+\end{center}
+For example, \(E_0\) fixes five of the twelve bits, leaving \(2^7=128\) assignments. Each \(E_t\) includes every possible setting of its unconstrained bits.
+
+\textbf{Do not simply add these counts.} A trace may belong to more than one failure event. Inclusion--exclusion gives
+\begin{align*}
+|E_0\cup E_1\cup E_2|
+={}&|E_0|+|E_1|+|E_2|\\
+&-|E_0\cap E_1|-|E_0\cap E_2|-|E_1\cap E_2|\\
+&+|E_0\cap E_1\cap E_2|.
+\end{align*}
+
+\textbf{Compute the intersections.}
+\begin{itemize}
+\item \(E_0\cap E_1=\varnothing\): \(r_0\) cannot be both 1 and 0.
+\item \(E_1\cap E_2=\varnothing\): \(r_1\) cannot be both 1 and 0.
+\item \(E_0\cap E_2\): \(r_0=1,r_1=0,r_2=1\), and all six responses are 0. Only \(r_3,r_4,r_5\) remain free, giving \(2^3=8\) traces.
+\item The triple intersection is empty because it contains contradictory adjacent trigger events.
+\end{itemize}
+Therefore
+\[
+N_{\mathrm{fail,when}}=128+64+64-8=248,
+\]
+\[
+\boxed{N_{\mathrm{pass,when}}=4,096-248=3,848.}
+\]
+The implementation's exhaustive enumeration produces exactly the same count.
+\newpage
+
+\lesson{7}{Derive REQ-002's 3,784 traces by hand}
+Now \texttt{whenever} triggers at every true request tick. There is no rising-edge restriction on the previous request.
+
+Let \(E_t\) mean that the \texttt{whenever} obligation at tick \(t\) fails, again for \(t\in\{0,1,2\}\).
+\begin{center}
+\begin{tabular}{cp{89mm}r}
+\toprule
+Event & Fixed values & Count\\\midrule
+\(E_0\) & \(r_0=1\); responses 0--3 are all 0 & \(2^7=128\)\\
+\(E_1\) & \(r_1=1\); responses 1--4 are all 0 & \(2^7=128\)\\
+\(E_2\) & \(r_2=1\); responses 2--5 are all 0 & \(2^7=128\)\\\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: add the individual failure counts.} The provisional total is \(3\times128=384\), but overlapping failures have been counted more than once.
+
+\textbf{Step 2: subtract each pairwise intersection.}
+\begin{center}
+\begin{tabular}{cp{88mm}r}
+\toprule
+Intersection & Fixed bits and remaining freedom & Count\\\midrule
+\(E_0\cap E_1\) & Two requests true; responses 0--4 zero. Five free bits. & 32\\[3pt]
+\(E_1\cap E_2\) & Two requests true; responses 1--5 zero. Five free bits. & 32\\[3pt]
+\(E_0\cap E_2\) & Two requests true; all six responses zero. Four free bits. & 16\\\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Step 3: restore the triple intersection.} For \(E_0\cap E_1\cap E_2\), requests 0--2 are true and all responses are zero. The three later request bits remain free, giving 8 traces.
+
+\textbf{Step 4: finish inclusion--exclusion.}
+\[
+N_{\mathrm{fail,whenever}}
+=384-(32+32+16)+8=312.
+\]
+\[
+\boxed{N_{\mathrm{pass,whenever}}=4,096-312=3,784.}
+\]
+
+\textbf{Interpret the difference.} Every rising-edge trigger is also a true-request tick. Consequently, the original \texttt{whenever} requirement is at least as restrictive as the original \texttt{when} requirement under this semantics. The 64-trace difference consists of behaviors accepted by \texttt{when} but rejected by \texttt{whenever}.
+
+\key{The two counts quantify different restrictions even though the illustrative interpretation distributions in Idea 1 have the same entropy.}
+\newpage
+
+\lesson{8}{Convert trace counts into entropy and information}
+Insert the verified counts into the uniform-set formula:
+\begin{align*}
+H_{\mathrm{when}}&=\log_2(3,848)=11.909893\bits,\\
+H_{\mathrm{whenever}}&=\log_2(3,784)=11.885696\bits.
+\end{align*}
+Before either requirement is imposed, entropy is 12 bits. The information supplied relative to that unrestricted universe is
+\begin{align*}
+I_{\mathrm{when}}&=12-11.909893=0.090107\bits,\\
+I_{\mathrm{whenever}}&=12-11.885696=0.114304\bits.
+\end{align*}
+
+\textbf{Why are these information values small?} Many uniformly sampled traces satisfy a response obligation, and late triggers cannot fail before the finite trace ends. These numbers describe this particular six-tick universe. They are not a percentage of safety, completeness, or implementation correctness.
+
+\textbf{Conditional contribution: order matters.} Write \(W\) for the original \texttt{when} requirement and \(V\) for the original \texttt{whenever} requirement. Since \(S_6(V)\subseteq S_6(W)\),
+\[
+|S_6(W\land V)|=3,784.
+\]
+Adding \(W\) after \(V\) gives
+\[
+\Delta I(W\mid V)=\log_2\frac{3,784}{3,784}=\boxed{0\bits}.
+\]
+Adding \(V\) after \(W\) gives
+\[
+\Delta I(V\mid W)=\log_2\frac{3,848}{3,784}
+=\boxed{0.024197\bits}.
+\]
+The zero contribution is redundancy relative to the existing context. It does not imply that the redundant requirement is poorly worded or lacks traceability value.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Requirement set & Admissible traces & Behavioral entropy\\\midrule
+None & 4,096 & 12.000000\\
+\(W\) only & 3,848 & 11.909893\\
+\(V\) only & 3,784 & 11.885696\\
+\(W\) and \(V\) & 3,784 & 11.885696\\\bottomrule
+\end{tabular}
+\end{center}
+
+\key{Behavioral entropies of requirements cannot simply be added. Their permitted trace sets overlap, and the marginal information depends on what is already required.}
+\newpage
+
+\lesson{9}{Idea 3: ask a question with measurable value}
+Return to uncertainty about \emph{meaning}. Let \(M\) be the intended meaning class and \(q\) a proposed clarification question. In this implementation, a question shows a finite trace and asks whether the intended requirement should permit it.
+
+An answer \(A\in\{\mathrm{yes},\mathrm{no}\}\) partitions the candidate classes. We assume a reliable answer and equal question costs for this experiment. If class \(i\) accepts the trace, its likelihood of a yes answer is 1; otherwise it is 0.
+
+\textbf{Step 1: predict the answer probabilities.}
+\[
+P(a\mid q)=\sum_i P(a\mid M_i,q)\,p_i.
+\]
+\textbf{Step 2: update the candidate probabilities after that answer.}
+\[
+P(M_i\mid a,q)=\frac{P(a\mid M_i,q)p_i}{P(a\mid q)}.
+\]
+This is Bayes' rule. An answer with zero predicted probability cannot be normalized under the current candidate model; it indicates that the model or candidates need revision.
+
+\textbf{Step 3: calculate expected remaining entropy.}
+\[
+\mathbb{E}[H\mid q]=\sum_a P(a\mid q)H(M\mid a,q).
+\]
+\textbf{Step 4: subtract it from the current entropy.}
+\[
+\boxed{\operatorname{EIG}(q)=H(M)-\mathbb{E}[H\mid q].}
+\]
+This is expected information gain, equivalently the mutual information between meaning and answer under the stated model. It is not an entropy of behaviors and not the information gain of an answer that has already been observed.
+
+The analyzer evaluates every trace, keeps one representative per distinct informative answer partition, and ranks the partitions by EIG. After an answer, the browser reranks questions using the posterior.
+
+\textbf{Useful bounds.} With reliable binary answers, EIG is at most one bit and at most the current meaning entropy. A question whose two answers each have probability one half reaches the one-bit limit if the answer is determined by the meaning class.
+
+\key{A hypothetical yes/no branch is a calculation, not stakeholder evidence. The saved initial outputs contain no actual answers.}
+\newpage
+
+\lesson{10}{Worked clarification: REQ-001}
+Use class probabilities \((0.5,0.25,0.25)\) for original \texttt{when}/3, tighter \texttt{when}/2, and alternate \texttt{whenever}/3.
+
+The highest-ranked question in the saved output uses this trace:
+\begin{center}
+\begin{tabular}{c|cccccc}
+\toprule
+Tick & 0 & 1 & 2 & 3 & 4 & 5\\\midrule
+Request & 1 & 1 & 0 & 1 & 0 & 0\\
+Response & 1 & 0 & 0 & 0 & 0 & 0\\\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{tabular}{p{37mm}cp{93mm}}
+\toprule
+Meaning & Permits? & Explanation\\\midrule
+Original when/3 & Yes & Tick 0 responds immediately. Tick 3's deadline is tick 6, beyond the trace.\\[3pt]
+Tighter when/2 & No & The tick 3 trigger has no response by its deadline at tick 5.\\[3pt]
+Alternate whenever/3 & No & The tick 1 trigger has no response by tick 4.\\\bottomrule
+\end{tabular}
+
+\textbf{Calculate the yes branch.}
+Only the original meaning permits the trace:
+\[
+P(\mathrm{yes})=0.5,\quad
+P(M\mid\mathrm{yes})=(1,0,0),\quad H_{\mathrm{yes}}=0.
+\]
+\textbf{Calculate the no branch.}
+The other meanings have total probability \(0.25+0.25=0.5\):
+\[
+P(\mathrm{no})=0.5,\quad
+P(M\mid\mathrm{no})=(0,0.5,0.5),\quad H_{\mathrm{no}}=1.
+\]
+\textbf{Average over the answers before asking.}
+\[
+\mathbb{E}[H\mid q]=0.5(0)+0.5(1)=0.5\bits.
+\]
+\[
+\boxed{\operatorname{EIG}(q)=1.5-0.5=1\bits.}
+\]
+After a yes answer the realized reduction is 1.5 bits; after a no answer it is 0.5 bits. Their expectation is one bit. The next question is chosen from the updated distribution, not from the original ranking alone.
+\newpage
+
+\lesson{11}{Worked clarification: REQ-002}
+The class probabilities are again \((0.5,0.25,0.25)\), now for original \texttt{whenever}/3, tighter \texttt{whenever}/2, and alternate \texttt{when}/3.
+
+One highest-ranked question uses the following trace:
+\begin{center}
+\begin{tabular}{c|cccccc}
+\toprule
+Tick & 0 & 1 & 2 & 3 & 4 & 5\\\midrule
+Request & 0 & 0 & 0 & 1 & 0 & 0\\
+Response & 0 & 0 & 0 & 0 & 0 & 0\\\bottomrule
+\end{tabular}
+\end{center}
+The three-tick candidates permit it because the deadline at tick 6 is beyond the trace. The two-tick candidate rejects it because its deadline expires at tick 5.
+
+\textbf{Yes branch.} Original and alternate meanings remain:
+\[
+P(\mathrm{yes})=0.5+0.25=0.75,\qquad
+P(M\mid\mathrm{yes})=(2/3,0,1/3).
+\]
+\[
+H_{\mathrm{yes}}=-\tfrac23\log_2\tfrac23-\tfrac13\log_2\tfrac13
+=0.918296\bits.
+\]
+\textbf{No branch.} Only the tighter deadline remains:
+\[
+P(\mathrm{no})=0.25,\quad P(M\mid\mathrm{no})=(0,1,0),\quad H_{\mathrm{no}}=0.
+\]
+\textbf{Expected reduction.}
+\begin{align*}
+\mathbb{E}[H\mid q]&=0.75(0.918296)+0.25(0)=0.688722,\\
+\operatorname{EIG}(q)&=1.5-0.688722=\boxed{0.811278\bits}.
+\end{align*}
+
+\textbf{Why not one bit?} These meanings form an implication chain:
+\[
+\text{whenever/2}\ \Longrightarrow\ \text{whenever/3}\ \Longrightarrow\ \text{when/3}.
+\]
+No trace can be accepted by the middle meaning and rejected by both extremes, or vice versa. The available informative partitions split prior mass into 0.25 and 0.75, rather than 0.5 and 0.5. With reliable binary answers their gain equals \(H(0.25,0.75)=0.811278\) bits.
+
+\key{Equal initial entropy does not imply equally informative available questions. The logical relationships between candidates determine which partitions can be realized.}
+\newpage
+
+\lesson{12}{Reproduce and explore the implementation}
+\textbf{Step 1: locate the repository.} Use the existing \texttt{FRET\_toy\_project} checkout. The two source statements are in \texttt{tutorial/FRET\_Tutorial\_TR.json}. All three implementations are under \texttt{entropy/}.
+
+\textbf{Step 2: regenerate FRET formulas when needed.} From the repository root, with Node and the FRET dependencies installed:
+\begin{verbatim}
+node entropy/compile.cjs
+\end{verbatim}
+This compiles eight candidate statements and records compiler/source hashes. Without Node, the checked-in compiled inputs still support the Python analyses.
+
+\textbf{Step 3: regenerate all calculations and pages.} Requires Python 3.10 or later, using only its standard library:
+\begin{verbatim}
+python entropy/run_all.py --horizon 6
+python entropy/test_entropy.py
+\end{verbatim}
+The first command creates three result files, three standalone pages, separate FRET import files, and a combined page. The second checks the numerical and semantic contracts.
+
+\textbf{Step 4: open the report.} Open \texttt{entropy/index.html} locally. It works offline. The existing local preview is at \url{http://127.0.0.1:8767/entropy/index.html} while that server is running.
+
+\textbf{Step 5: use the three separate pages.}
+\begin{enumerate}
+\item \textbf{Meaning:} inspect classes; change weights to \((2,1,1)\), then \((1,0,0)\). Observe 1.5 and 0 bits. These exploratory controls do not edit FRET or the saved results.
+\item \textbf{Behavior:} compare individual counts and the contribution given the other requirement. Expand ``Actual FRET output'' to read the generated semantics.
+\item \textbf{Clarification:} inspect the trace before answering. Yes/no updates probabilities. Unsure preserves them. Neither reopens the candidate set and pauses questions. Reset starts over; Export answer ledger downloads the session as JSON.
+\end{enumerate}
+Treat practice answers as practice, not stakeholder elicitation data. The page does not authenticate respondents or save answers automatically.
+
+\textbf{Step 6: import into FRET.} Each numbered analysis directory contains \texttt{fret-project.json}. Use FRET's import control to create the three analysis projects. Calculated snapshots appear in requirement rationales; interactive entropy controls remain in the companion page. The eight/eight/two imported records are analysis views of two source requirements, not 18 independent experimental subjects.
+\newpage
+
+\lesson{13}{Audit the outputs and avoid common errors}
+\textbf{Where each result comes from.}
+\begin{center}
+\begin{tabular}{p{55mm}p{85mm}}
+\toprule
+File under \texttt{entropy/} & Purpose\\\midrule
+\texttt{inputs/analysis.json} & Candidate priors, source provenance, compiler hash.\\
+\texttt{inputs/fret-project.json} & Real FRET compiler output for all eight candidates.\\
+\texttt{common.py} & Finite-formula evaluator, trace enumeration, entropy and class grouping.\\
+\texttt{01\_semantic\_interpretation/} & Meaning classes, priors, entropy, independent entry point.\\
+\texttt{02\_behavioral\_freedom/} & Counts, entropy, conjunction and conditional contributions.\\
+\texttt{03\_active\_clarification/} & Distinguishing traces, branch posteriors and expected gains.\\
+\texttt{validation.json} & Recorded test status and comparison scope.\\\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{What was checked.} Eight test methods passed. For each of eight candidates, the evaluator was compared with an independent trigger/deadline obligation implementation on every trace at horizons 1--6:
+\[
+8\sum_{h=1}^{6}4^h=8(5,460)=43,680\text{ comparisons}.
+\]
+Other checks cover invalid probabilities, unsupported formulas, finite boundaries, aliases, bounded equivalence, inconsistency, redundancy, witnesses and posterior normalization. The reported behavioral counts also have the independent hand derivations in Lessons 6--7.
+
+\textbf{What this does not establish.} It is not external model-checker agreement, unbounded equivalence, system realizability, human probability calibration, a controlled user study, or physical acceptance testing. A parser that handles these formulas is not a complete FRET or LTL implementation.
+
+\textbf{Common interpretation errors.}
+\begin{itemize}
+\item ``Zero meaning entropy means correct.'' It may simply mean one candidate was supplied.
+\item ``More behavior entropy means more ambiguity.'' Behavioral freedom and uncertainty about meaning are different quantities.
+\item ``1.5 bits was measured from NASA users.'' The prior is explicitly illustrative.
+\item ``A six-tick equivalence is universal.'' Longer traces may distinguish the candidates.
+\item ``The question always removes its EIG.'' EIG is an expectation before observing the answer.
+\item ``Lower entropy is enough for acceptance.'' Acceptance requires separate, current verification evidence and a reviewed decision.
+\end{itemize}
+\newpage
+
+\lesson{14}{Exercises, solutions, and further reading}
+\textbf{Exercise 1.} Calculate \(H(0.8,0.1,0.1)\). What assumption changed relative to \((0.5,0.25,0.25)\)?
+
+\textbf{Exercise 2.} Replace the original meaning's two 0.25 aliases with five aliases of mass 0.1 each. Keep the other two class masses at 0.25. What happens to meaning entropy?
+
+\textbf{Exercise 3.} A uniform trace universe contains 1,024 behaviors. Requirement A leaves 512; adding B leaves 128. Find \(I(A)\), \(I(B\mid A)\), and the remaining behavioral entropy.
+
+\textbf{Exercise 4.} A reliable yes/no question isolates a meaning with probability 0.2 from the remaining mass 0.8. What is its EIG? Assume each meaning determines the answer.
+
+\textbf{Exercise 5.} Why can all three experimental meanings collapse into one class at horizon two? Does zero bounded meaning entropy close the engineering decision?
+
+\textbf{Solutions.}
+\begin{enumerate}
+\item \(H=0.921928\) bits. The candidate probabilities changed; this is a different prior or posterior, not new formal semantics.
+\item Meaning entropy remains 1.5 bits: the original class still has mass 0.5. Label entropy becomes \(-5(0.1\log_2 0.1)-2(0.25\log_2 0.25)=2.660964\) bits.
+\item \(I(A)=1\) bit; \(I(B\mid A)=2\) bits; remaining entropy \(\log_2 128=7\) bits.
+\item \(\operatorname{EIG}=H(0.2,0.8)=0.721928\) bits.
+\item No deadline of two or three ticks can expire within ticks 0--1. The equivalence is a horizon artifact. Candidate completeness and acceptance remain unassessed.
+\end{enumerate}
+
+\textbf{Research foundations.} The implementation applies established concepts; entropy, model counting, and active learning are not claimed as new inventions.
+\begin{enumerate}
+\item FRETish semantics: \emph{A Compositional Proof Framework for FRETish Requirements}. \url{https://arxiv.org/abs/2201.03641}
+\item Grenn, Sarkani, and Mazzuchi: \emph{The Requirements Entropy Framework in Systems Engineering} (2014). \url{https://doi.org/10.1111/sys.21283}
+\item Kuhn, Gal, and Farquhar: \emph{Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation} (2023). \url{https://arxiv.org/abs/2302.09664}
+\item \emph{Information-Guided Temporal Logic Inference with Prior Knowledge}. \url{https://arxiv.org/abs/1811.08846}
+\end{enumerate}
+\small Repository and full methodological references:\\
+\url{https://github.com/volkanaranengineering/FRET_toy_project/tree/main/entropy}
+\end{document}

@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "pages": 15,
+  "event_counts": {
+    "when": {
+      "single": [
+        128,
+        64,
+        64
+      ],
+      "pair": [
+        0,
+        0,
+        8
+      ],
+      "triple": 0,
+      "passed": 3848
+    },
+    "whenever": {
+      "single": [
+        128,
+        128,
+        128
+      ],
+      "pair": [
+        32,
+        32,
+        16
+      ],
+      "triple": 8,
+      "passed": 3784
+    }
+  },
+  "meaning_entropy": 1.5,
+  "clarification_gain": [
+    1,
+    0.8112781244591328
+  ],
+  "exercises": {
+    "ex1": 0.9219280948873623,
+    "ex2_label": 2.6609640474436813,
+    "ex4": 0.7219280948873623
+  },
+  "scope": "Numerical examples, PDF text presence, page count, LaTeX overflow/glyph log; visual review performed separately."
+}
